@@ -10,6 +10,7 @@ import Home from "../routeComponents/Home";
 import AuthRouter from "../routeComponents/auth/AuthRouter";
 import { AuthContextComponent } from "../contexts/authContext";
 import UserDetails from "../components/User-details/User-details"
+import AdDetails from "../components/Ad-details/AdDetails"
 
 //App Function
 
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route path="/auth" component={AuthRouter} />
           <Route path="/detalhes-cuidador" component={UserDetails} />
+          <Route path="/detalhes-anuncio" component={AdDetails} />
         </Switch>
       </AuthContextComponent>
     </BrowserRouter>
