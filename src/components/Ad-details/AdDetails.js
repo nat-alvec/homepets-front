@@ -5,7 +5,7 @@ function AdDetails() {
   return (
     <>
       <div>
-        <Link to="/detalhes-anuncio">Voltar às casas</Link>
+        <Link to="/detalhes-anuncio">Voltar às petHouses</Link>
       </div>
       <div>
         <h1>Descrição breve</h1>
