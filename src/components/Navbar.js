@@ -6,6 +6,7 @@ import { AuthContext } from '../contexts/authContext';
 
 function Navbar() {
   const { logout, loggedInUser } = useContext(AuthContext);
+  console.log(loggedInUser)
   return (
     <nav className='py-0 px-4 navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between'>
       <Link
@@ -48,7 +49,32 @@ function Navbar() {
             </Link>
           </li>
         )}
-
+        {loggedInUser.token ? (
+          <li className='nav-item'>
+            <Link
+              className='nav-link p-0 me-2'
+              aria-current='page'
+              to='/ad/create'
+            >
+              <button className='btn btn-dark rounded-pill'>
+                Criar anúncio
+              </button>
+            </Link>
+          </li>
+        ) : null}
+        {loggedInUser.token ? (
+          <li className='nav-item'>
+            <Link
+              className='nav-link p-0 me-2'
+              aria-current='page'
+              to='/user/profile'
+            >
+              <button className='btn btn-primary rounded-pill'>
+                {loggedInUser.user.name.split(' ')[0]}
+              </button>
+            </Link>
+          </li>
+        ) : null}
         {loggedInUser.token ? (
           <li className='nav-item'>
             <Link
