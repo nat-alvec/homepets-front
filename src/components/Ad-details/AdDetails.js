@@ -9,24 +9,8 @@ import api from "../../apis/api"; // Instância do Axios pré-configurada
 import CarouselComp from "../carousel/Carousel";
 
 function AdDetails() {
-
-  //Coleção do Usuário
-  const [userDetails, setUserDetails] = useState({
-    profilePicUrl: "",
-    email: "",
-  })
-
   //Coleção do Anúncio
-  const [adDetails, setAdDetails] = useState({
-    user: { name: "" },
-    availableDates: { startDate: "", endDate: "" },
-    title: "",
-    location: "",
-    intro: "",
-    homeinfo: "",
-    duties: "",
-    pets: [{ name: "", species: "", age: null }],
-  });
+  const [adDetails, setAdDetails] = useState();
 
   const { id } = useParams();
 
@@ -36,14 +20,16 @@ function AdDetails() {
         const responseAd = await api.get(`/adv/${id}`);
         setAdDetails({ ...responseAd.data });
 
-        const responseUser = await api.get(`/profile/${id}`);
-        setUserDetails({ ...responseUser.data });
       } catch (err) {
         console.error(err);
       }
     }
     fetchAdDetails();
   }, [id]);
+
+if (!adDetails){
+  return <h1>Carregando...</h1>
+}
 
   return (
     <div className="container mt-2 mb-2 d-flex flex-column justify-content-center align-items-center">
@@ -67,21 +53,21 @@ function AdDetails() {
             <div className="second d-flex flex-row mt-2">
               <div className="image mr-3">
                 <img
-                  src="https://i.imgur.com/0LKZQYM.jpg"
+                  src={adDetails.user.profilePicUrl}
                   className="rounded-circle"
                   width="60"
                 />
               </div>
               <div className="">
                 <div className="d-flex flex-row mb-1">
-                  <span>Dono do Pet</span>
+                  <span>{adDetails.user.name}</span>
                 </div>
                 <p>Home and pet owner</p>
               </div>
             </div>
             <hr className="line-color" />
             <h6>Período de cuidado dos pets:</h6>
-            {/* <p>
+            <p>
               {
                 new Date(adDetails.availableDates.startDate)
                   .toLocaleString()
@@ -93,11 +79,11 @@ function AdDetails() {
                   .toLocaleString()
                   .split(",")[0]
               }
-            </p> */}
+            </p>
             <hr className="line-color" />
             <div className="third mt-4">
               <h6>Entre em contato:</h6>
-              <p>Símbolos de contato</p>
+              <a href={`mailto:${adDetails.user.email}`}>email</a>
             </div>
           </div>
         </div>
@@ -133,7 +119,7 @@ function AdDetails() {
             width="95"
           />
           <div className="mt-3">
-            <h4>Pet Name</h4>
+            <h4>Nome do Pet</h4>
             <p className="text-secondary mb-1">Raça</p>
             <p className="text-muted font-size-sm">Idade</p>
           </div>
