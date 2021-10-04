@@ -9,7 +9,7 @@ import api from "../../apis/api"; // Instância do Axios pré-configurada
 import CarouselComp from "../carousel/Carousel";
 
 function AdDetails() {
-  //Coleção do Anúncio
+  const [hasError, setHasError] = useState(false);
   const [adDetails, setAdDetails] = useState();
 
   const { id } = useParams();
@@ -21,11 +21,16 @@ function AdDetails() {
         setAdDetails({ ...responseAd.data });
 
       } catch (err) {
+        setHasError(true);
         console.error(err);
       }
     }
     fetchAdDetails();
   }, [id]);
+
+  if (hasError){
+    return <h1>Erro!</h1>
+  }
 
 if (!adDetails){
   return <h1>Carregando...</h1>
@@ -119,9 +124,9 @@ if (!adDetails){
             width="95"
           />
           <div className="mt-3">
-            <h4>Nome do Pet</h4>
-            <p className="text-secondary mb-1">Raça</p>
-            <p className="text-muted font-size-sm">Idade</p>
+            <h4>{adDetails.pets[0].name}</h4>
+            <p className="text-secondary mb-1">{adDetails.pets[0].breed}</p>
+            <p className="text-muted font-size-sm">{adDetails.pets[0].age}</p>
           </div>
         </div>
       </div>
