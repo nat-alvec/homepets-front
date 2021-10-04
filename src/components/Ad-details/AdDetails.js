@@ -9,11 +9,15 @@ import api from "../../apis/api"; // Instância do Axios pré-configurada
 import CarouselComp from "../carousel/Carousel";
 
 function AdDetails() {
-  const [adDetails, setAdDetails] = useState({
-    //Coleção do Usuário
+
+  //Coleção do Usuário
+  const [userDetails, setUserDetails] = useState({
     profilePicUrl: "",
     email: "",
-    //Coleção do Anúncio
+  })
+
+  //Coleção do Anúncio
+  const [adDetails, setAdDetails] = useState({
     user: { name: "" },
     availableDates: { startDate: "", endDate: "" },
     title: "",
@@ -29,9 +33,11 @@ function AdDetails() {
   useEffect(() => {
     async function fetchAdDetails() {
       try {
-        const response = await api.get(`/ad/${id}`);
+        const responseAd = await api.get(`/adv/${id}`);
+        setAdDetails({ ...responseAd.data });
 
-        setAdDetails({ ...response.data });
+        const responseUser = await api.get(`/profile/${id}`);
+        setUserDetails({ ...responseUser.data });
       } catch (err) {
         console.error(err);
       }
@@ -75,19 +81,19 @@ function AdDetails() {
             </div>
             <hr className="line-color" />
             <h6>Período de cuidado dos pets:</h6>
-            <p>
+            {/* <p>
               {
                 new Date(adDetails.availableDates.startDate)
                   .toLocaleString()
                   .split(",")[0]
-              }{" "}
-              até{" "}
+              }
+              até
               {
                 new Date(adDetails.availableDates.endDate)
                   .toLocaleString()
                   .split(",")[0]
-              }{" "}
-            </p>
+              }
+            </p> */}
             <hr className="line-color" />
             <div className="third mt-4">
               <h6>Entre em contato:</h6>
@@ -123,13 +129,13 @@ function AdDetails() {
           <img
             src="https://media.istockphoto.com/photos/cute-sitting-havanese-puppy-dog-picture-id611308904?k=20&m=611308904&s=170667a&w=0&h=2emV7QLqhHRN0eepi0ZxZz8UtXD_sk-tYckF38Dz2IY="
             alt="User pet photo"
-            class="rounded-circle"
+            className="rounded-circle"
             width="95"
           />
-          <div class="mt-3">
+          <div className="mt-3">
             <h4>Pet Name</h4>
-            <p class="text-secondary mb-1">Raça</p>
-            <p class="text-muted font-size-sm">Idade</p>
+            <p className="text-secondary mb-1">Raça</p>
+            <p className="text-muted font-size-sm">Idade</p>
           </div>
         </div>
       </div>
