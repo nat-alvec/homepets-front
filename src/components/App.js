@@ -21,8 +21,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/auth" component={AuthRouter} />
-          <Route path="/detalhes-cuidador" component={UserDetails} />
-          <Route path="/detalhes-anuncio" component={AdDetails} />
+          <Route path="/detalhes-cuidador/:id" component={UserDetails} />
+          <Route path="/detalhes-anuncio/:id" component={AdDetails} />
         </Switch>
       </AuthContextComponent>
     </BrowserRouter>
