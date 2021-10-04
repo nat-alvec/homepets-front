@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const apis = {
-  development: "A URL DO SEU SERVIDOR EXPRESS LOCAL AQUI",
-  production: "A URL DO SEU SERVIDOR DEPLOYADO NO HEROKU AQUI",
+  development: "http://localhost:4000/api/v1",
+  production: "http://localhost:4000/api/v1",
 };
 
 // Pré-configurando a URL padrão do nosso backend em uma instância do Axios

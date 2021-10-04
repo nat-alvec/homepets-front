@@ -1,1 +1,5 @@
 /* Seus estilos globais vão aqui */
+nav a {
+    text-decoration: none;
+    color: black;
+}
