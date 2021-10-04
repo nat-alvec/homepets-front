@@ -3,15 +3,14 @@ import { Link } from 'react-router-dom';
 import logo from '../components/images/pet-house.png';
 import dogHomepage from '../components/images/homepage-dog.jpg';
 import brandName from '../components/images/homepets-brand.png';
-import { height } from 'dom-helpers';
 
 function Home() {
     return (
         <div className='mb-4'>
-            <div class='card text-dark mx-4 mt-4'>
+            <div className='card text-dark mx-4 mt-4'>
                 <img
                     src={dogHomepage}
-                    class='card-img'
+                    className='card-img'
                     alt='dog in the garden'
                     style={{
                         height: '25rem',
@@ -19,10 +18,10 @@ function Home() {
                         objectFit: 'cover',
                     }}
                 />
-                <div class='card-img-overlay text-center d-flex justify-content-end align-items-center'>
+                <div className='card-img-overlay text-center d-flex justify-content-end align-items-center'>
                     <div className='bg-light rounded ms-3 my-5 p-2 h-auto' style={{width:"40%"}}>
-                        <h2 class='card-title'>Cuide de um Pet em qualquer lugar do mundo</h2>
-                        <p class='card-text'>
+                        <h2 className='card-title'>Cuide de um Pet em qualquer lugar do mundo</h2>
+                        <p className='card-text'>
                             Agende sua estadia e cuide de um pet em qualquer
                             lugar do mundo!
                         </p>
