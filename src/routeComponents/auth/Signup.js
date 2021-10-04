@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import api from '../../apis/api';
+
+import { AuthContext } from '../../contexts/authContext';
 
 function Signup(props) {
   const [state, setState] = useState({ name: '', password: '', email: '' });
@@ -9,6 +11,15 @@ function Signup(props) {
     email: null,
     password: null,
   });
+  const history = useHistory();
+  const { loggedInUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    // Caso o usuário já esteja logado, redirecione para página principal
+    if (loggedInUser.token) {
+      history.push("/");
+    }
+  }, [loggedInUser, history]);
 
   function handleChange(event) {
     setState({
@@ -24,7 +35,7 @@ function Signup(props) {
       const response = await api.post('/signup', state);
       console.log(response);
       setErrors({ name: '', password: '', email: '' });
-      props.history.push('/auth/login');
+      history.push('/auth/login');
     } catch (err) {
       console.error(err.response);
       setErrors({ ...err.response.data.errors });
