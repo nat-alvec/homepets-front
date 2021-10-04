@@ -1,8 +1,34 @@
-import { Link } from "react-router-dom";
-import Carousel from "../carousel/Carousel";
+import api from "../../apis/api"; // Instância do Axios pré-configurada
+import { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+
+
+import CarouselComp from "../carousel/Carousel";
 import "../User-details/userDetails.css";
 
 function UserDetails() {
+
+  const [userDetails, setUserDetails] = useState();
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    async function fetchUserDetails() {
+      try {
+        const response = await api.get(`/profile`);
+        setUserDetails({ ...response.data });
+
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchUserDetails();
+  }, [id]);
+
+if (!userDetails){
+  return <h1>Carregando...</h1>
+}
+
   return (
     <div className="container mt-2 mb-2 d-flex flex-column justify-content-center align-items-center">
       <div
@@ -24,7 +50,7 @@ function UserDetails() {
         </div>
         {/* CARROSSEL */}
         <div>
-          <Carousel />
+          <CarouselComp />
         </div>
         {/* DESCRIÇÃO SOBRE O USER */}
         <div>
