@@ -7,7 +7,7 @@ import TextInput from '../form/TextInput';
 import TextAreaInput from '../form/TextArea';
 import DropdownMenu from '../form/DropDownMenu';
 import CheckForm from '../form/CheckForm';
-//import PictureForm from '../form/PictureForm';
+import PictureForm from '../form/PictureForm';
 
 function CreateAd() {
   const [state, setState] = useState({
@@ -35,9 +35,19 @@ function CreateAd() {
     endDate: new Date().toISOString().split('T')[0],
   });
 
-  const [pictureUrl, setPictureUrl] = useState('');
+  const [pictureUrl, setPictureUrl] = useState({
+    pic0: '',
+    pic1: '',
+    pic2: '',
+    pic3: '',
+    pic4: '',
+    pic5: '',
+    pic6: '',
+    pic7: '',
+    pic8: '',
+    pic9: '',
+  });
 
-  const emptyState = { ...state };
   const history = useHistory();
   const { loggedInUser } = useContext(AuthContext);
 
@@ -102,25 +112,17 @@ function CreateAd() {
   }
 
   function handlePictures(event) {
-    setPictureUrl(event.target.value);
-    state.picturesUrl.push(pictureUrl);
-
-    setState({ ...state, picturesUrl: [...state.picturesUrl] });
+    setPictureUrl({ ...pictureUrl, [event.target.name]: event.target.value });
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
 
     try {
-      const stateToPush = {
-        ...state,
-        user: loggedInUser.user._id,
-        location: { ...location },
-        amenities: [...amenities],
-        availableDates: { ...availableDates },
-      };
+      const picturesArray = Object.values(pictureUrl).filter(
+        (elem) => elem !== ''
+      );
 
-      console.log(stateToPush);
       const response = await api.post('/adv', {
         ...state,
         pets: state.pets.map((elem) => elem._id),
@@ -128,9 +130,10 @@ function CreateAd() {
         location: { ...location },
         amenities: [...amenities],
         availableDates: { ...availableDates },
+        picturesUrl: [...picturesArray],
       });
+      
       console.log(response);
-      setState({ emptyState });
       history.push('/');
     } catch (err) {
       console.error(err);
@@ -140,6 +143,7 @@ function CreateAd() {
     <div className='container mt-4' style={{ maxWidth: '650px' }}>
       <form onSubmit={handleSubmit} className='m-2'>
         <TextInput
+          type='text'
           label='Título do anúncio'
           id='adFormTitle'
           name='title'
@@ -285,17 +289,14 @@ function CreateAd() {
             />
           </div>
         </div>
-        <h6>Selecione fotos do seu imóvel e do seu bichinho</h6>
-        <TextInput
-          type='text'
-          label='Url da foto 1'
-          id='adFormTitle'
-          name='picture'
-          onChange={handlePictures}
+        <PictureForm
+          iterations={pictureUrl}
           value={pictureUrl}
+          onChange={handlePictures}
+          placeholder='Coloque a Url da foto'
         />
 
-        <button type='submit' className='btn btn-primary mb-3 d-block'>
+        <button type='submit' className='btn btn-primary my-3 d-block'>
           Criar
         </button>
       </form>

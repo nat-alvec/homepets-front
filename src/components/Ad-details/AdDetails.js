@@ -92,7 +92,7 @@ function AdDetails() {
 
         <div>
           <h1>{adDetails.title}</h1>
-          <p>{adDetails.location}</p>
+          {/* <p>{adDetails.location}</p> */}
           <p>símbolos de pets na casa</p>
         </div>
         <div>

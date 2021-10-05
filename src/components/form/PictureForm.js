@@ -1,25 +1,23 @@
 function PictureForm(props) {
+  const keys = Object.keys(props.iterations);
   return (
     <div className='row'>
-      <div className='col-6'>
-        <p>Coloque a Url da foto</p>
-        <div className='input-group mb-3'>
-          <div className='input-group-text'>
+      <h6 className="my-3">Selecione as fotos do seu imóvel e do seu bichinho</h6>
+      {keys.map((elem) => {
+        return (
+          <div key={elem} className='my-2 col-6'>
             <input
-              className='form-check-input mt-0'
-              type='checkbox'
-              value={props.value}
-              onChange={props.handlePictures}
-              aria-label='Checkbox for following text input'
+              type='text'
+              className='form-control'
+              aria-label='Text input with checkbox'
+              name={elem}
+              value={props.value[elem]}
+              onChange={props.onChange}
+              placeholder={props.placeholder}
             />
           </div>
-          <input
-            type='text'
-            className='form-control'
-            aria-label='Text input with checkbox'
-          />
-        </div>
-      </div>
+        );
+      })}
     </div>
   );
 }

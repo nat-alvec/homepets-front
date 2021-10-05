@@ -3,6 +3,7 @@ import React from 'react';
 import logo from '../components/images/pet-house.png';
 import dogHomepage from '../components/images/homepage-dog.jpg';
 import brandName from '../components/images/homepets-brand.png';
+import FeedAd from '../components/ad/FeedAd';
 
 function Home() {
   return (
@@ -32,8 +33,8 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className='text-center'>
-        <div className='mt-4'>
+      <div className='text-center d-flex flex-column justify-content-center align-items-center'>
+        <div className='mt-4 mb-4'>
           <img src={logo} alt='homepets logo' width='80px' height='80px' />
           <img
             src={brandName}
@@ -42,6 +43,7 @@ function Home() {
             height='80px'
           />
         </div>
+        <FeedAd />
       </div>
     </div>
   );
