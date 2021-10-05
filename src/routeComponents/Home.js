@@ -21,27 +21,32 @@ function Home() {
         />
         <div className='card-img-overlay text-center d-flex justify-content-end align-items-center'>
           <div
-            className='bg-light rounded ms-3 my-5 p-2 h-auto'
-            style={{ width: '40%' }}
+            className='bg-warning rounded ms-3 my-5 p-3 h-auto'
+            style={{ width: '42%' }}
           >
-            <h2 className='card-title'>
+            <h3 className='card-title'>
               Cuide de um Pet em qualquer lugar do mundo
-            </h2>
-            <p className='card-text'>
-              Agende sua estadia e cuide de um pet em qualquer lugar do mundo!
+            </h3>
+            <p className='card-text mt-2'>
+              Hospede-se de graça e cuide de um bichinho fofinho!
             </p>
           </div>
         </div>
       </div>
       <div className='text-center d-flex flex-column justify-content-center align-items-center'>
-        <div className='mt-4 mb-4'>
-          <img src={logo} alt='homepets logo' width='80px' height='80px' />
+        <div className='mt-5 mb-4'>
+          <img src={logo} alt='homepets logo' width='70px' height='70px' />
           <img
             src={brandName}
             alt='homepets logo'
-            width='148.57px'
-            height='80px'
+            width='130px'
+            height='70px'
           />
+        </div>
+        <div>
+          <p className='mt-4 mb-5' style={{ fontSize: '24px' }}>
+            Explore e descubra centenas de casas e pets
+          </p>
         </div>
         <FeedAd />
       </div>
