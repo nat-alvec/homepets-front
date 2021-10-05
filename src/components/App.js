@@ -1,16 +1,18 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../assets/styles/index.css';
+
 //Importing Libraries
-
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { AuthContextComponent } from '../contexts/authContext';
+import AuthRouter from '../routeComponents/auth/AuthRouter';
+//import PrivateRoute from '../routeComponents/auth/PrivateRoute';
 
 //Importing components
-
-import Home from "../routeComponents/Home";
-import AuthRouter from "../routeComponents/auth/AuthRouter";
-import { AuthContextComponent } from "../contexts/authContext";
-import UserDetails from "../components/User-details/User-details"
+import Navbar from './Navbar';
+import CreateAd from './ad/CreateAd';
+import Home from '../routeComponents/Home';
 import AdDetails from "../components/Ad-details/AdDetails"
+import UserDetails from "../components/User-details/User-details"
 
 //App Function
 
@@ -18,12 +20,14 @@ function App() {
   return (
     <BrowserRouter>
       <AuthContextComponent>
+        <Navbar />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/auth" component={AuthRouter} />
+          <Route exact path='/' component={Home} />
+          <Route path='/auth' component={AuthRouter} />
           <Route path="/detalhes-cuidador/:id" component={UserDetails} />
           <Route path="/detalhes-anuncio/:id" component={AdDetails} />
         </Switch>
+        <Route exact path='/adv/create' component={CreateAd} />
       </AuthContextComponent>
     </BrowserRouter>
   );
