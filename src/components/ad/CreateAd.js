@@ -7,7 +7,7 @@ import TextInput from '../form/TextInput';
 import TextAreaInput from '../form/TextArea';
 import DropdownMenu from '../form/DropDownMenu';
 import CheckForm from '../form/CheckForm';
-import PictureForm from '../form/PictureForm';
+//import PictureForm from '../form/PictureForm';
 
 function CreateAd() {
   const [state, setState] = useState({
@@ -35,7 +35,7 @@ function CreateAd() {
     endDate: new Date().toISOString().split('T')[0],
   });
 
-  const [pictureUrl, setPictureUrl] = useState("")
+  const [pictureUrl, setPictureUrl] = useState('');
 
   const emptyState = { ...state };
   const history = useHistory();
@@ -103,9 +103,9 @@ function CreateAd() {
 
   function handlePictures(event) {
     setPictureUrl(event.target.value);
-    state.picturesUrl.push(pictureUrl)
+    state.picturesUrl.push(pictureUrl);
 
-    setState({...state, picturesUrl: [...state.picturesUrl]})
+    setState({ ...state, picturesUrl: [...state.picturesUrl] });
   }
 
   async function handleSubmit(event) {
@@ -130,8 +130,8 @@ function CreateAd() {
         availableDates: { ...availableDates },
       });
       console.log(response);
-      //setState({ emptyState });
-      //history.push('/');
+      setState({ emptyState });
+      history.push('/');
     } catch (err) {
       console.error(err);
     }
@@ -291,7 +291,7 @@ function CreateAd() {
           label='Url da foto 1'
           id='adFormTitle'
           name='picture'
-          onBlur={handlePictures}
+          onChange={handlePictures}
           value={pictureUrl}
         />
 
