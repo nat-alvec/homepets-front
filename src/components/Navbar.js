@@ -6,7 +6,7 @@ import { AuthContext } from '../contexts/authContext';
 
 function Navbar() {
   const { logout, loggedInUser } = useContext(AuthContext);
-  console.log(loggedInUser)
+
   return (
     <nav className='py-0 px-4 navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between'>
       <Link
@@ -54,7 +54,7 @@ function Navbar() {
             <Link
               className='nav-link p-0 me-2'
               aria-current='page'
-              to='/ad/create'
+              to='/adv/create'
             >
               <button className='btn btn-dark rounded-pill'>
                 Criar anúncio
