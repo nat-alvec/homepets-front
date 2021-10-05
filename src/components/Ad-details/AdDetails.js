@@ -1,11 +1,9 @@
 //Importando configurações e bibliotecas
-
 import { useState, useEffect } from "react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import api from "../../apis/api"; // Instância do Axios pré-configurada
 
 //Importando Componentes
-
 import CarouselComp from "../carousel/Carousel";
 
 function AdDetails() {
@@ -19,7 +17,6 @@ function AdDetails() {
       try {
         const responseAd = await api.get(`/adv/${id}`);
         setAdDetails({ ...responseAd.data });
-
       } catch (err) {
         setHasError(true);
         console.error(err);
@@ -28,13 +25,13 @@ function AdDetails() {
     fetchAdDetails();
   }, [id]);
 
-  if (hasError){
-    return <h1>Erro!</h1>
+  if (hasError) {
+    return <h1>Erro!</h1>;
   }
 
-if (!adDetails){
-  return <h1>Carregando...</h1>
-}
+  if (!adDetails) {
+    return <h1>Carregando...</h1>;
+  }
 
   return (
     <div className="container mt-2 mb-2 d-flex flex-column justify-content-center align-items-center">

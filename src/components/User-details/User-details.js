@@ -1,13 +1,14 @@
+//Importando configurações e bibliotecas
 import api from "../../apis/api"; // Instância do Axios pré-configurada
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
-
+//Importado Componentes
 import CarouselComp from "../carousel/Carousel";
 import "../User-details/userDetails.css";
 
 function UserDetails() {
-
+  const [hasError, setHasError] = useState(false);
   const [userDetails, setUserDetails] = useState();
 
   const { id } = useParams();
@@ -15,19 +16,23 @@ function UserDetails() {
   useEffect(() => {
     async function fetchUserDetails() {
       try {
-        const response = await api.get(`/profile`);
+        const response = await api.get(`/profile/${id}`);
         setUserDetails({ ...response.data });
-
       } catch (err) {
+        setHasError(true);
         console.error(err);
       }
     }
     fetchUserDetails();
   }, [id]);
 
-if (!userDetails){
-  return <h1>Carregando...</h1>
-}
+  if (hasError) {
+    return <h1>Erro!</h1>;
+  }
+
+  if (!userDetails) {
+    return <h1>Carregando...</h1>;
+  }
 
   return (
     <div className="container mt-2 mb-2 d-flex flex-column justify-content-center align-items-center">
@@ -42,9 +47,9 @@ if (!userDetails){
         {/* SOBRE MIM DE CADA USER */}
         <div className="card mb-4">
           <div className="card-body">
-            <h1 className="titleFont">Nome do cuidador</h1>
-            <p className="subtitleFont">Breve descrição</p>
-            <p className="localizationFont">Localização</p>
+            <h1 className="titleFont">{userDetails.name}</h1>
+            <p className="subtitleFont">{userDetails.personalDesc}</p>
+            <p className="localizationFont">{`${userDetails.city}, ${userDetails.country}`}</p>
             <p> Reviews</p>
           </div>
         </div>
@@ -56,7 +61,7 @@ if (!userDetails){
         <div>
           <p className="subtitleFont">Sobre mim</p>
           <p className="textsFonts">
-            lorem ipsum dolor sit amet, consectetur adipiscing
+            {userDetails.latestWorksDesc}
           </p>
         </div>
         {/* COMENTÁRIOS */}
