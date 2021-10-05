@@ -1,42 +1,239 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lora&family=Poppins:wght@300&display=swap');
+body{margin-top:0px;
+    padding-top: 0px;
+    background:#eee;
+    }
 
-.container {
-    align-items: center;
-    margin-top: 10px;
-}
+    .titleFont{
+        font-family: 'Lora', serif;
+        font-size: 32px;
+        color: black;
+        font-weight: bold;
+    }
 
-.titleFont{
-    font-family: 'Lora', serif;
-    font-size: 32px;
-}
+    .subtitleFont{
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        color:black;
+    }
 
-.subtitleFont{
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-}
+    .line{
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        color: #dda005;
+    }
 
-.localizationFont{
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-}
+    .pets-container{
+        flex-direction: column;
+    }
 
-.textsFonts{
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-}
+    .icon-style{
+        color:black;
+        font-size: 25px;
+    }
 
-.comment-title{
-    font-family: 'Lora', serif;
-}
+    .textsFonts{
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        margin-bottom: 0;
+    }
 
-.comment-name{
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    color: #4090C4;
-}
+    .line-color{
+        color:#555
+    }
 
-.star-color{
-    color:#FFD500
-}
+    .pet-name{
+        font-family: 'Poppins', sans-serif;
+        font-size: 18px;
+        color:black;
+        font-weight: bold;
+    }
+
+    .error-color{
+        color: red
+    }
+
+    .media {
+      color: #999999;
+      font-weight: 600;
+      margin-top: 15px;
+    }
+    .media-body{
+        background-color: #EBD18F;
+    }
+    .media:first-child {
+      margin-top: 0;
+    }
+    .media-right,
+    .media > .pull-right {
+      padding-left: 10px;
+    }
+    .media-left,
+    .media > .pull-left {
+      padding-right: 10px;
+    }
+    .media-left,
+    .media-right,
+    .media-body {
+      display: table-cell;
+      vertical-align: top;
+      background-color: #EBD18F;
+    }
+    .media-middle {
+      vertical-align: middle;
+    }
+    .media-bottom {
+      vertical-align: bottom;
+    }
+    .media-heading {
+      color: #555555;
+      padding-top: 30px;
+      margin-bottom: 5px;
+    }
+    .media-list {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .tab-block .nav-tabs {
+        position: relative;
+        border: 0;
+      }
+      /* nav tab item */
+      .tab-block .nav-tabs > li {
+        float: left;
+        margin-bottom: -1px;
+      }
+      /* nav tab link */
+      .tab-block .nav-tabs > li > a {
+        z-index: 9;
+        position: relative;
+        color: #AAA;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 14px 20px;
+        margin-right: -1px;
+        border-color: #e2e2e2;
+        border-radius: 0;
+        background: #fafafa;
+      }
+      .tab-block .nav-tabs > li:first-child > a {
+        margin-left: 0;
+      }
+      /* nav tab link:hover */
+      .tab-block .nav-tabs > li > a:hover {
+        background-color: #f4f4f4;
+      }
+      /* nav tab active link:focus:hover */
+      .tab-block .nav-tabs > li.active > a,
+      .tab-block .nav-tabs > li.active > a:hover,
+      .tab-block .nav-tabs > li.active > a:focus {
+        cursor: default;
+        position: relative;
+        z-index: 12;
+        color: #555555;
+        background: #FFF;
+        border-color: #e2e2e2;
+        border-bottom: 1px solid #FFF;
+      }
+      /*===============================================
+        Tab Navigation - Tabs Left
+      ================================================= */
+      .tabs-left {
+        float: left;
+      }
+      /* nav tab item */
+      .tabs-left > li {
+        float: none;
+        margin: 0 -1px -1px 0;
+      }
+      /* nav tab item link */
+      .tabs-left > li > a {
+        padding: 14px 16px;
+        color: #777;
+        font-weight: 600;
+        border: 1px solid transparent;
+        border-color: #DDD;
+        background: #fafafa;
+      }
+      /* nav tab link:hover */
+      /* nav tab active link:focus:hover */
+      .tab-block .tabs-left > li.active > a,
+      .tab-block .tabs-left > li.active > a:hover,
+      .tab-block .tabs-left > li.active > a:focus {
+        color: #555;
+        border-color: #DDD #FFF #DDD #DDD;
+        cursor: default;
+        position: relative;
+        z-index: 12;
+        background: #FFF;
+      }
+      /*===============================================
+        Tab Navigation - Tabs Right
+      ================================================= */
+      .tabs-right {
+        float: right;
+      }
+      /* nav tab item */
+      .tabs-right > li {
+        float: none;
+        margin: 0 0 -1px -1px;
+      }
+      /* nav tab item link */
+      .tabs-right > li > a {
+        padding: 14px 16px;
+        color: #777;
+        font-weight: 600;
+        border: 1px solid transparent;
+        border-color: #DDD;
+        background: #fafafa;
+      }
+      /* nav tab link:hover */
+      /* nav tab active link:focus:hover */
+      .tab-block .tabs-right > li.active > a,
+      .tab-block .tabs-right > li.active > a:hover,
+      .tab-block .tabs-right > li.active > a:focus {
+        color: #555;
+        border-color: #DDD #DDD #DDD #FFF;
+        cursor: default;
+        position: relative;
+        z-index: 12;
+        background: #FFF;
+      }
+      /*===============================================
+        Tab Navigation - Tabs Right
+      ================================================= */
+      .tabs-below {
+        position: relative;
+      }
+      /* nav tab item */
+      .tabs-below > li {
+        float: left;
+        margin-top: -1px;
+      }
+      /* nav tab item link */
+      .tabs-below > li > a {
+        position: relative;
+        z-index: 9;
+        margin-right: -1px;
+        padding: 11px 16px;
+        color: #777;
+        font-weight: 600;
+        border: 1px solid #DDD;
+        background: #fafafa;
+      }
+      /* nav tab link:hover */
+      /* nav tab active link:focus:hover */
+      .tab-block .tabs-below > li.active > a,
+      .tab-block .tabs-below > li.active > a:hover,
+      .tab-block .tabs-below > li.active > a:focus {
+        cursor: default;
+        position: relative;
+        z-index: 12;
+        color: #555555;
+        background: #FFF;
+        border-color: #DDD;
+        border-top: 1px solid #FFF;
+      }
+
+      
