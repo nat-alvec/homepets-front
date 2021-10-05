@@ -4,7 +4,7 @@ import { useParams, useHistory, Link } from 'react-router-dom';
 import api from '../../apis/api'; // Instância do Axios pré-configurada
 
 //Importando Componentes
-import './adDetails.css';
+import '../ad-details/adDetails.css';
 import CarouselComp from '../carousel/Carousel';
 
 function AdDetails() {
@@ -29,7 +29,7 @@ function AdDetails() {
   if (hasError) {
     return (
       <h1>
-        <i class=' error-color fas fa-exclamation-triangle'></i> Erro ao
+        <i className=' error-color fas fa-exclamation-triangle'></i> Erro ao
         carregar esta página!
       </h1>
     );
@@ -47,12 +47,17 @@ function AdDetails() {
       >
         {/* LINK PARA VOLTAR À PÁGINA ANTERIOR */}
         <div>
-          <Link to='/detalhes-anuncio'>Voltar às petHouses</Link>
+          <Link to='/detalhes-anuncio'><button
+                className='btn btn-danger rounded-pill my-3 mx-5'
+                
+              >
+                Home Pets
+              </button></Link>
         </div>
-        {/* CALENDÁRIO DE DISPONIBILIDADE E INFORMAÇÕES DE CONTATO */}
-        <div className='container mt-5 d-flex justify-content-center'>
+        {/* CARD DE DISPONIBILIDADE E INFORMAÇÕES DE CONTATO */}
+        <div className='container mt-2 d-flex justify-content-center'>
           <div
-            className='card p-4 my-3 '
+            className='card p-4 my-3 adv-first-card '
             style={{ width: '98vw', maxWidth: '740px' }}
           >
             <div className='first'>
@@ -63,25 +68,34 @@ function AdDetails() {
                 <img
                   src={adDetails.user.profilePicUrl}
                   className='rounded-circle'
-                  width='60'
+                  width='90'
                 />
               </div>
-              <div className=''>
+              {/* Primera parte do card 1 - Nome e foto do usuário / localização */}
+              <div>
                 <div className='d-flex flex-row mb-1'>
-                  <span>{adDetails.user.name}</span>
+                  <span className='titleFont mx-3'>{adDetails.user.name}</span>
                 </div>
-                <p>Home and pet owner</p>
+                <p className='localizationFont my-0 mx-3'>
+                  {adDetails.location.country}, {adDetails.location.city}
+                </p>
+                <p className='localizationFont my-0 mx-3'>
+                  {' '}
+                  Rua: {adDetails.location.street}, número:{' '}
+                  {adDetails.location.number}{' '}
+                </p>
               </div>
+              {/* Segunda Parte do card 1 - Data de cuidado dos pets */}
             </div>
             <hr className='line-color' />
-            <h6>Período de cuidado dos pets:</h6>
+            <h6 className='subtitleFont'>Período de cuidado dos pets:</h6>
             <p>
               {
                 new Date(adDetails.availableDates.startDate)
                   .toLocaleString()
                   .split(',')[0]
               }
-              até
+              à
               {
                 new Date(adDetails.availableDates.endDate)
                   .toLocaleString()
@@ -89,33 +103,38 @@ function AdDetails() {
               }
             </p>
             <hr className='line-color' />
-            <div className='third mt-4'>
-              <h6>Entre em contato:</h6>
-              <a href={`mailto:${adDetails.user.email}`}>email</a>
+            {/* CONTATO */}
+            <div className='third mt-2 mx-3'>
+              <a href={`mailto:${adDetails.user.email}`}>
+                <i class='fas fa-envelope icon-style'></i>
+              </a>
             </div>
           </div>
         </div>
-
+        {/* TÍTULO DO ANÚNCIO */}
         <div>
-          <h1>{adDetails.title}</h1>
-          <p>{adDetails.location}</p>
-          <p>símbolos de pets na casa</p>
+          <h1 className='titleFont mx-3 my-4'>{adDetails.title}</h1>
         </div>
+        {/* CARROSSEL */}
         <div>
-          {/* CARROSSEL */}
-          <div>
-            <CarouselComp pics={adDetails.picturesUrl} />
-          </div>
+          <CarouselComp className='carousel' pics={adDetails.picturesUrl} />
         </div>
 
+        {/* AMENIITES */}
+        <div className='container d-flex flex-row bd-highlight mb-3 mx-2'>
+          <h3 className='smallTitle mt-2'>Características desse lugar:</h3>
+          {adDetails.amenities.map((amenitie) => (
+            <button className='btn btn-outline-dark btn-sm'>{amenitie}</button>
+          ))}
+        </div>
+        {/* SOBRE MIM DE CADA USER */}
         <div>
-          {/* SOBRE MIM DE CADA USER */}
-          <h3>Sobre mim</h3>
-          <p>{adDetails.intro}</p>
-          <h3>Sobre a casa</h3>
-          <p>{adDetails.homeinfo}</p>
-          <h3>Responsabilidades</h3>
-          <p>{adDetails.duties}</p>
+          <h3 className='smallTitle mt-2 mx-4'>Sobre mim</h3>
+          <p className='textsFonts mx-4'>{adDetails.intro}</p>
+          <h3 className='smallTitle mt-2 mx-4'>Sobre a casa</h3>
+          <p className='textsFonts mx-4'>{adDetails.homeinfo}</p>
+          <h3 className='smallTitle mt-2 mx-4'>Responsabilidades</h3>
+          <p className='textsFonts mx-4'>{adDetails.duties}</p>
         </div>
         {/* PETS DO USUÁRIO NO ANÚNCIO */}
         <div>

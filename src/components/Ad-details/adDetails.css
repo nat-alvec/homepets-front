@@ -1,14 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora&family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
 
 .container {
     align-items: center;
     margin-top: 10px;
 }
 
+.adv-first-card{
+    background-color: #088ce4;
+}
+
 .titleFont{
     font-family: 'Lora', serif;
     font-size: 32px;
+}
+
+.smallTitle{
+    font-family: 'Lora', serif;
+    font-size: 23px;
 }
 
 .subtitleFont{
@@ -18,8 +28,9 @@
 }
 
 .localizationFont{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Abel', sans-serif;
     font-size: 14px;
+    margin-bottom:0;
 }
 
 .textsFonts{
@@ -39,4 +50,13 @@
 
 .error-color{
     color: red
+}
+
+.carousel{
+    max-width: 98vw;
+}
+.btn {
+    border-radius: 15px !important;
+    margin-right: 3px !important;
+    margin-left: 3px !important;
 }
