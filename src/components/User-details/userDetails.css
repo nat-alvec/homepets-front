@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Poppins:wght@300&display=swap');
+
+.container {
+    align-items: center;
+    margin-top: 10px;
+}
+
+.titleFont{
+    font-family: 'Lora', serif;
+    font-size: 32px;
+}
+
+.subtitleFont{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.localizationFont{
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+.textsFonts{
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+.comment-title{
+    font-family: 'Lora', serif;
+}
+
+.comment-name{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #4090C4;
+}
+
+.star-color{
+    color:#FFD500
+}
