@@ -5,7 +5,7 @@ import TextInput from '../form/TextInput';
 import TextAreaInput from '../form/TextArea';
 import CheckForm from '../form/CheckForm';
 import DropdownMenu from '../form/DropDownMenu';
-import PictureForm from '../form/PictureForm';
+import PictureFormEdit from '../form/PictureFormEdit';
 import { AuthContext } from '../../contexts/authContext';
 
 function EditAd() {
@@ -25,12 +25,6 @@ function EditAd() {
   });
 
   const [pets, setPets] = useState([]);
-  const [availableDates, setAvailableDates] = useState({
-    startDate: new Date().toISOString().split('T')[0],
-    endDate: new Date().toISOString().split('T')[0],
-  });
-  const [amenities, setAmenities] = useState([]);
-  const [location, setLocation] = useState({});
 
   const { id } = useParams();
   const history = useHistory();
@@ -57,7 +51,6 @@ function EditAd() {
     }
     fetchAd();
     fetchPets();
-    
   }, [id, loggedInUser.user._id]);
 
   function handleChange(event) {
@@ -88,31 +81,52 @@ function EditAd() {
   }
 
   function handleDate(event) {
-    setAvailableDates({
-      ...availableDates,
-      [event.target.name]: event.target.value,
+    setState({
+      ...state,
+      availableDates: {...state.availableDates, [event.target.name]: event.target.value },
     });
   }
 
   function handleAmenities(event) {
     if (event.target.checked) {
       state.amenities.push(event.target.value);
-      setState({...state, amenities:state.amenities});
+      setState({ ...state, amenities: state.amenities });
     } else {
-      const index = state.amenities.findIndex((elem) => elem === event.target.value);
+      const index = state.amenities.findIndex(
+        (elem) => elem === event.target.value
+      );
       if (index > -1) {
         state.amenities.splice(index, 1);
       }
 
-      setState({...state, amenities:state.amenities});;
+      setState({ ...state, amenities: state.amenities });
     }
   }
 
   function handleLocation(event) {
-    setLocation({ ...location, [event.target.name]: event.target.value });
+    setState({
+      ...state,
+      location: { ...state.location, [event.target.name]: event.target.value },
+    });
   }
 
-  async function handleSubmit() {}
+  function handlePictures(event) {
+    state.picturesUrl[event.target.name] = event.target.value;
+    setState({ ...state, picturesUrl: state.picturesUrl });
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    try {
+      const response = await api.patch(`/adv/${id}`, {
+        ...state,
+      });
+      console.log(response);
+      history.push('/');
+    } catch (err) {
+      console.log(err.response);
+    }
+  }
 
   return (
     <div className='container mt-4' style={{ maxWidth: '650px' }}>
@@ -222,7 +236,7 @@ function EditAd() {
               id='adFormCountry'
               name='country'
               onChange={handleLocation}
-              value={location.country}
+              value={state.location.country}
             />
           </div>
           <div className='col-6'>
@@ -249,7 +263,7 @@ function EditAd() {
               id='adFormCity'
               name='city'
               onChange={handleLocation}
-              value={location.city}
+              value={state.location.city}
             />
           </div>
         </div>
@@ -261,7 +275,7 @@ function EditAd() {
               id='adFormStreet'
               name='street'
               onChange={handleLocation}
-              value={location.street}
+              value={state.location.street}
             />
           </div>
           <div className='col-3'>
@@ -271,14 +285,13 @@ function EditAd() {
               id='adFormTitle'
               name='number'
               onChange={handleLocation}
-              value={location.number}
+              value={state.location.number}
             />
           </div>
         </div>
-        <PictureForm
-          iterations={state.picturesUrl.length}
-          value={state.picturesUrl}
-          onChange={handleChange}
+        <PictureFormEdit
+          pictures={state.picturesUrl}
+          onChange={handlePictures}
           placeholder='Coloque a Url da foto'
         />
 
