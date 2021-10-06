@@ -39,7 +39,7 @@ function EditProfile() {
     event.preventDefault();
 
     api
-      .patch(`/profile/${id}`, {...state})
+      .patch(`/profile/${id}`, { ...state })
       .then(() => {
         history.push(`/detalhes-usuario/${id}`);
       })
@@ -51,6 +51,7 @@ function EditProfile() {
   return (
     <div className='container mt-4' style={{ maxWidth: '650px' }}>
       <form onSubmit={handleSubmit} className='m-2'>
+        <h1>Editar Informações de usuário</h1>
         <TextInput
           type='text'
           label='Nome e sobrenome'

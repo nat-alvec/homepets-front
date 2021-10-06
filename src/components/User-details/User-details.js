@@ -88,9 +88,9 @@ function UserDetails() {
                   </ul>
                 </div>
                 {/* LINK PARA EDITAR USUÁRIO */}
-                <div className='container d-flex justify-content-end edit-user'>
-                  <Link to={`/edit-profile/${id}`}>
-                    <i class='fas fa-pen-square pl-20'></i>
+                <div className='container d-flex justify-content-end mt-4'>
+                <Link to={`/edit-profile/${id}`}>
+                    <i class='fas fa-pen-square pl-20 edit-user'></i>
                   </Link>
                 </div>
               </div>
