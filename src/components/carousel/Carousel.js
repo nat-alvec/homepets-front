@@ -1,16 +1,17 @@
 import Carousel from 'react-bootstrap/Carousel'
 
-function CarouselComp() {
+function CarouselComp(props) {
  return ( 
-  <Carousel>
-  <Carousel.Item>
+  <Carousel key={props.pics}>
+    {props.pics.map((image) => 
+      <Carousel.Item>
     <img
       className="d-block w-100"
-      src="https://i.pinimg.com/originals/31/91/61/319161dff37e119c4ffc3c04391d1a23.jpg"
+      src={image}
       alt="First slide"
     />
   </Carousel.Item>
-  
+    )}
 </Carousel>
  )
 }
