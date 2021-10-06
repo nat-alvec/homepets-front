@@ -136,7 +136,7 @@ function CreateAd() {
       console.log(response);
       history.push('/');
     } catch (err) {
-      console.error(err);
+      console.error(err.response);
     }
   }
   return (

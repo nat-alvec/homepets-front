@@ -9,6 +9,7 @@ function convertDate(dateStr) {
     'Jul',
     'Ago',
     'Set',
+    'Out',
     'Nov',
     'Dez',
   ];
@@ -18,7 +19,7 @@ function convertDate(dateStr) {
   const year = date.getFullYear();
   let phrase = '';
 
-  phrase = `${day} ${monthPtBr[month]} ${year}`;
+  phrase = `${day + 1} ${monthPtBr[month]} ${year}`;
 
   return phrase;
 }
