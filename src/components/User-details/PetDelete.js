@@ -5,15 +5,14 @@ import { AuthContext } from '../../contexts/authContext';
 import api from '../../apis/api';
 
 function PetDelete() {
-    const history = useHistory();
-    const { id } = useParams();
-    const { loggedInUser } = useContext(AuthContext);
+  const history = useHistory();
+  const { id } = useParams();
+  const { loggedInUser } = useContext(AuthContext);
 
   useEffect(() => {
     async function deletePet() {
       try {
         const response = await api.delete(`/pet/${id}`);
-
         console.log(response.data);
         history.push(`/detalhes-usuario/${loggedInUser.user._id}`);
       } catch (err) {
@@ -23,7 +22,11 @@ function PetDelete() {
     deletePet();
   }, [id, history]);
 
-  return <h1>Deletando</h1>;
+  return (
+    <div className='container mt-5 text-center'>
+      <h1>Deletando pet...</h1>
+    </div>
+  );
 }
 
 export default PetDelete;

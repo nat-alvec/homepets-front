@@ -16,6 +16,7 @@ import AdDetails from "./ad-details/AdDetails"
 import UserDetails from "./user-details/User-details"
 import EditProfile from "./user-details/EditProfile"
 import PetDelete from './user-details/PetDelete';
+import PetEdit from './user-details/PetEdit'
 
 //App Function
 
@@ -34,6 +35,7 @@ function App() {
         <Route exact path='/adv/edit/:id' component={EditAd} />
         <Route path='/edit-profile/:id' component={EditProfile} />
         <Route path='/pet-delete/:id' component={PetDelete} />
+        <Route path='/pet-edit/:id' component={PetEdit} />
       </AuthContextComponent>
     </BrowserRouter>
   );
