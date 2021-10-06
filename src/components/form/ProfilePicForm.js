@@ -5,7 +5,7 @@ function ProfilePicForm(props){
         type='text'
         className='form-control'
         aria-label='text input'
-        name='profilePicUrl'
+        name={props.name}
         value={props.value}
         onChange={props.onChange}
         placeholder={props.placeholder}
