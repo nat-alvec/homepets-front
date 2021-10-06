@@ -5,6 +5,7 @@ body {
   font-family: 'Poppins';
   color: #2C303F;
   font-size: 0.9rem;
+  background-color: white !important;
 }
 
 nav .btnNav {

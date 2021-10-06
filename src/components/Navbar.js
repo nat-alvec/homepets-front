@@ -67,7 +67,7 @@ function Navbar() {
             <Link
               className='nav-link p-0 me-2'
               aria-current='page'
-              to='/user/profile'
+              to={`/detalhes-usuario/${loggedInUser.user._id}`}
             >
               <button className='btn btn-primary rounded-pill btnNav'>
                 {loggedInUser.user.name.split(' ')[0]}

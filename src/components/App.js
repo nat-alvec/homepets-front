@@ -12,8 +12,8 @@ import Navbar from './Navbar';
 import EditAd from './ad/EditAd';
 import CreateAd from './ad/CreateAd';
 import Home from '../routeComponents/Home';
-import AdDetails from '../components/Ad-details/AdDetails';
-import UserDetails from '../components/User-details/User-details';
+import AdDetails from './ad-details/AdDetails';
+import UserDetails from './user-details/User-details';
 
 //App Function
 
@@ -25,7 +25,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/auth' component={AuthRouter} />
-          <Route path='/detalhes-cuidador/:id' component={UserDetails} />
+          <Route path='/detalhes-usuario/:id' component={UserDetails} />
           <Route path='/detalhes-anuncio/:id' component={AdDetails} />
         </Switch>
         <Route exact path='/adv/create' component={CreateAd} />
