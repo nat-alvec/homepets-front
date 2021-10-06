@@ -47,12 +47,11 @@ function AdDetails() {
       >
         {/* LINK PARA VOLTAR À PÁGINA ANTERIOR */}
         <div>
-          <Link to='/detalhes-anuncio'><button
-                className='btn btn-danger rounded-pill my-3 mx-5'
-                
-              >
-                Home Pets
-              </button></Link>
+          <Link to='/detalhes-anuncio'>
+            <button className='btn btn-danger rounded-pill my-3 mx-5'>
+              Home Pets
+            </button>
+          </Link>
         </div>
         {/* CARD DE DISPONIBILIDADE E INFORMAÇÕES DE CONTATO */}
         <div className='container mt-2 d-flex justify-content-center'>
@@ -138,22 +137,33 @@ function AdDetails() {
         </div>
         {/* PETS DO USUÁRIO NO ANÚNCIO */}
         <div>
-          <h3>Meus pets</h3>
-          {adDetails.pets.map((pet) => (
-            <>
-              <img
-                src={pet.imageUrl}
-                alt='pet photo'
-                className='rounded-circle'
-                width='95'
-              />
-              <div className='mt-3'>
-                <h4>{pet.name}</h4>
-                <p className='text-secondary mb-1'>{pet.breed}</p>
-                <p className='text-muted font-size-sm'>{pet.age}</p>
+
+          <h3 className='smallTitle mt-2 mx-4'>Meus pets</h3>
+
+          <div className='pets-container d-flex'>
+            {adDetails.pets.map((pet) => (
+              <>
+              <div className='container d-flex'>
+                <div className='p-2 bd-highlight'>
+                  <img
+                    src={pet.imageUrl}
+                    alt='Pet picture'
+                    className='rounded-circle mx-1 p-3'
+                    width='150px'
+                  />
+                </div>
+                <div className='p-2 bd-highlight'>
+                  <h3 className='pet-name mt-4'>Nome: {pet.name}</h3>
+                  <p className='textsFonts'>Raça: {pet.breed}</p>
+                  <p className='textsFonts mb-0'>Idade: {pet.age}</p>
+                </div>
+              </div>
+              <div className='mx-5'>
+                <hr className='my-4 line' />
               </div>
             </>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

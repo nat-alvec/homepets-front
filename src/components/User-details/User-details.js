@@ -111,22 +111,24 @@ function UserDetails() {
             <div className='pets-container d-flex'>
               {userDetails.pets.map((pet) => (
                 <>
-                <div className='container d-flex'>
-                  <div className='p-2 bd-highlight'>
-                    <img
-                      src={pet.imageUrl}
-                      alt='Pet picture'
-                      className='rounded-circle mx-1 p-3'
-                      width='150px'
-                    />
+                  <div className='container d-flex'>
+                    <div className='p-2 bd-highlight'>
+                      <img
+                        src={pet.imageUrl}
+                        alt='Pet picture'
+                        className='rounded-circle mx-1 p-3'
+                        width='150px'
+                      />
+                    </div>
+                    <div className='p-2 bd-highlight'>
+                      <h3 className='pet-name mt-4'>Nome: {pet.name}</h3>
+                      <p className='textsFonts'>Raça: {pet.breed}</p>
+                      <p className='textsFonts mb-0'>Idade: {pet.age}</p>
+                    </div>
                   </div>
-                  <div className='p-2 bd-highlight'>
-                    <h3 className='pet-name mt-4'>Nome: {pet.name}</h3>
-                    <p className='textsFonts'>Raça: {pet.breed}</p>
-                    <p className='textsFonts mb-0'>Idade: {pet.age}</p>
+                  <div className='mx-5'>
+                    <hr className='my-4 line' />
                   </div>
-                </div>
-                <div className='mx-5'><hr className='my-4 line'/></div>
                 </>
               ))}
             </div>

@@ -7,8 +7,12 @@
     margin-top: 10px;
 }
 
+.pets-container{
+    flex-direction: column;
+}
+
 .adv-first-card{
-    background-color: #088ce4;
+    background-color: #72b9e7;
 }
 
 .titleFont{
