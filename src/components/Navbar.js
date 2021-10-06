@@ -31,7 +31,7 @@ function Navbar() {
               aria-current='page'
               to='/auth/signup'
             >
-              <button className='btn btn-warning rounded-pill'>
+              <button className='btn btn-warning rounded-pill btnNav'>
                 Cadastre-se
               </button>
             </Link>
@@ -45,7 +45,7 @@ function Navbar() {
               aria-current='page'
               to='/auth/login'
             >
-              <button className='btn btn-primary rounded-pill'>Entre</button>
+              <button className='btn btn-primary rounded-pill btnNav'>Entre</button>
             </Link>
           </li>
         )}
@@ -56,7 +56,7 @@ function Navbar() {
               aria-current='page'
               to='/adv/create'
             >
-              <button className='btn btn-dark rounded-pill'>
+              <button className='btn btn-dark rounded-pill btnNav'>
                 Criar anúncio
               </button>
             </Link>
@@ -69,7 +69,7 @@ function Navbar() {
               aria-current='page'
               to={`/detalhes-usuario/${loggedInUser.user._id}`}
             >
-              <button className='btn btn-primary rounded-pill'>
+              <button className='btn btn-primary rounded-pill btnNav'>
                 {loggedInUser.user.name.split(' ')[0]}
               </button>
             </Link>
@@ -83,7 +83,7 @@ function Navbar() {
               to='/'
               onClick={logout}
             >
-              <button className='btn btn-danger rounded-pill'>Sair</button>
+              <button className='btn btn-danger rounded-pill btnNav'>Sair</button>
             </Link>
           </li>
         ) : null}

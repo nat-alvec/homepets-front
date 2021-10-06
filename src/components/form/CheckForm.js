@@ -1,7 +1,7 @@
 function CheckForm(props) {
   const options = props.options;
   return (
-    <div className="mb-3">
+    <div className='mb-3'>
       <p>{props.label}</p>
       {options.map((elem, index) => {
         return (
@@ -12,6 +12,7 @@ function CheckForm(props) {
               id='inlineCheckbox'
               value={elem}
               onChange={props.handle}
+              checked={props.marked ? props.marked.includes(elem) : false}
             />
             <label className='form-check-label' htmlFor='inlineCheckbox'>
               {elem}

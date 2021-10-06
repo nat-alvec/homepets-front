@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
 //Importado Componentes
-import '../User-details/userDetails.css';
+import './userDetails.css';
 
 function UserDetails() {
   const [userDetails, setUserDetails] = useState();

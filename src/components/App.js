@@ -9,6 +9,7 @@ import AuthRouter from '../routeComponents/auth/AuthRouter';
 
 //Importing components
 import Navbar from './Navbar';
+import EditAd from './ad/EditAd';
 import CreateAd from './ad/CreateAd';
 import Home from '../routeComponents/Home';
 import AdDetails from "../components/ad-details/AdDetails"
@@ -24,10 +25,11 @@ function App() {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/auth' component={AuthRouter} />
-          <Route path="/detalhes-usuario/:id" component={UserDetails} />
-          <Route path="/detalhes-anuncio/:id" component={AdDetails} />
+          <Route path='/detalhes-usuario/:id' component={UserDetails} />
+          <Route path='/detalhes-anuncio/:id' component={AdDetails} />
         </Switch>
         <Route exact path='/adv/create' component={CreateAd} />
+        <Route exact path='/adv/edit/:id' component={EditAd} />
       </AuthContextComponent>
     </BrowserRouter>
   );

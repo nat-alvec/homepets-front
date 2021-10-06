@@ -1,15 +1,14 @@
-import { useState, useContext, useEffect } from 'react';
-import { useHistory } from 'react-router';
+import { useState, useEffect, useContext } from 'react';
 import api from '../../apis/api';
-import { AuthContext } from '../../contexts/authContext';
-
+import { useParams, useHistory } from 'react-router-dom';
 import TextInput from '../form/TextInput';
 import TextAreaInput from '../form/TextArea';
-import DropdownMenu from '../form/DropDownMenu';
 import CheckForm from '../form/CheckForm';
+import DropdownMenu from '../form/DropDownMenu';
 import PictureForm from '../form/PictureForm';
+import { AuthContext } from '../../contexts/authContext';
 
-function CreateAd() {
+function EditAd() {
   const [state, setState] = useState({
     title: '',
     intro: '',
@@ -17,41 +16,35 @@ function CreateAd() {
     duties: '',
     pets: [],
     picturesUrl: [],
+    availableDates: {
+      startDate: new Date().toISOString().split('T')[0],
+      endDate: new Date().toISOString().split('T')[0],
+    },
+    location: {},
+    amenities: [],
   });
-
-  const [location, setLocation] = useState({
-    country: '',
-    city: '',
-    number: '',
-    street: '',
-  });
-
-  const [amenities, setAmenities] = useState([]);
 
   const [pets, setPets] = useState([]);
-
   const [availableDates, setAvailableDates] = useState({
     startDate: new Date().toISOString().split('T')[0],
     endDate: new Date().toISOString().split('T')[0],
   });
+  const [amenities, setAmenities] = useState([]);
+  const [location, setLocation] = useState({});
 
-  const [pictureUrl, setPictureUrl] = useState({
-    pic0: '',
-    pic1: '',
-    pic2: '',
-    pic3: '',
-    pic4: '',
-    pic5: '',
-    pic6: '',
-    pic7: '',
-    pic8: '',
-    pic9: '',
-  });
-
+  const { id } = useParams();
   const history = useHistory();
   const { loggedInUser } = useContext(AuthContext);
 
   useEffect(() => {
+    async function fetchAd() {
+      try {
+        const response = await api.get(`/adv/${id}`);
+        setState({ ...response.data });
+      } catch (err) {
+        console.error(err);
+      }
+    }
     async function fetchPets() {
       try {
         if (loggedInUser.user._id) {
@@ -62,24 +55,18 @@ function CreateAd() {
         console.error(err);
       }
     }
+    fetchAd();
     fetchPets();
-  }, [loggedInUser.user._id]);
+    
+  }, [id, loggedInUser.user._id]);
 
   function handleChange(event) {
-    setState({ ...state, [event.target.name]: event.target.value });
-  }
-
-  function handleAmenities(event) {
-    if (event.target.checked) {
-      amenities.push(event.target.value);
-      setAmenities([...amenities]);
+    if (Array.isArray(state[event.target.name])) {
+      console.log('array');
+    } else if (typeof state[event.target.name] === 'object') {
+      console.log('object');
     } else {
-      const index = amenities.findIndex((elem) => elem === event.target.value);
-      if (index > -1) {
-        amenities.splice(index, 1);
-      }
-
-      setAmenities([...amenities]);
+      setState({ ...state, [event.target.name]: event.target.value });
     }
   }
 
@@ -107,38 +94,26 @@ function CreateAd() {
     });
   }
 
+  function handleAmenities(event) {
+    if (event.target.checked) {
+      state.amenities.push(event.target.value);
+      setState({...state, amenities:state.amenities});
+    } else {
+      const index = state.amenities.findIndex((elem) => elem === event.target.value);
+      if (index > -1) {
+        state.amenities.splice(index, 1);
+      }
+
+      setState({...state, amenities:state.amenities});;
+    }
+  }
+
   function handleLocation(event) {
     setLocation({ ...location, [event.target.name]: event.target.value });
   }
 
-  function handlePictures(event) {
-    setPictureUrl({ ...pictureUrl, [event.target.name]: event.target.value });
-  }
+  async function handleSubmit() {}
 
-  async function handleSubmit(event) {
-    event.preventDefault();
-
-    try {
-      const picturesArray = Object.values(pictureUrl).filter(
-        (elem) => elem !== ''
-      );
-
-      const response = await api.post('/adv', {
-        ...state,
-        pets: state.pets.map((elem) => elem._id),
-        user: loggedInUser.user._id,
-        location: { ...location },
-        amenities: [...amenities],
-        availableDates: { ...availableDates },
-        picturesUrl: [...picturesArray],
-      });
-      
-      console.log(response);
-      history.push('/');
-    } catch (err) {
-      console.error(err);
-    }
-  }
   return (
     <div className='container mt-4' style={{ maxWidth: '650px' }}>
       <form onSubmit={handleSubmit} className='m-2'>
@@ -162,6 +137,8 @@ function CreateAd() {
           label='Quais pets estão na casa?'
           options={pets.map((elem) => elem.name)}
           handle={handlePets}
+          name='pets'
+          marked={state.pets.map((elem) => elem.name)}
         />
         <TextAreaInput
           label='Sobre a casa'
@@ -179,7 +156,11 @@ function CreateAd() {
               id='adFormStartDate'
               name='startDate'
               onChange={handleDate}
-              value={availableDates.startDate}
+              value={
+                new Date(state.availableDates.startDate)
+                  .toISOString()
+                  .split('T')[0]
+              }
             />
           </div>
           <div className='col-6'>
@@ -189,7 +170,11 @@ function CreateAd() {
               id='adFormEndDate'
               name='endDate'
               onChange={handleDate}
-              value={availableDates.endDate}
+              value={
+                new Date(state.availableDates.endDate)
+                  .toISOString()
+                  .split('T')[0]
+              }
             />
           </div>
         </div>
@@ -207,6 +192,7 @@ function CreateAd() {
             'Acessibilidade',
           ]}
           handle={handleAmenities}
+          marked={state.amenities}
         />
         <TextAreaInput
           label='Responsabilidades'
@@ -290,9 +276,9 @@ function CreateAd() {
           </div>
         </div>
         <PictureForm
-          iterations={pictureUrl}
-          value={pictureUrl}
-          onChange={handlePictures}
+          iterations={state.picturesUrl.length}
+          value={state.picturesUrl}
+          onChange={handleChange}
           placeholder='Coloque a Url da foto'
         />
 
@@ -304,4 +290,4 @@ function CreateAd() {
   );
 }
 
-export default CreateAd;
+export default EditAd;
