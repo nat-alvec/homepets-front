@@ -89,7 +89,7 @@ function UserDetails() {
                 </div>
                 {/* LINK PARA EDITAR USUÁRIO */}
                 <div className='container d-flex justify-content-end mt-4'>
-                <Link to={`/edit-profile/${id}`}>
+                  <Link to={`/edit-profile/${id}`}>
                     <i class='fas fa-pen-square pl-20 edit-user'></i>
                   </Link>
                 </div>
@@ -113,11 +113,11 @@ function UserDetails() {
           </div>
           {/* CONDIÇÃO PARA RENDERIZAÇÃO DE INFORMAÇÕES DE ACORDO COM CADA BOTÃO */}
           {showPets ? (
-            <div className='pets-container d-flex'>
+            <div className='pets-container'>
               {userDetails.pets.map((pet) => (
                 <>
                   <div className='container d-flex'>
-                    <div className='p-2 bd-highlight'>
+                    <div className='container'>
                       <img
                         src={pet.imageUrl}
                         alt='Pet picture'
@@ -129,10 +129,16 @@ function UserDetails() {
                         }}
                       />
                     </div>
-                    <div className='p-2 bd-highlight'>
+                    <div className='container'>
                       <h3 className='pet-name mt-4'>Nome: {pet.name}</h3>
                       <p className='textsFonts'>Raça: {pet.breed}</p>
                       <p className='textsFonts mb-0'>Idade: {pet.age}</p>
+                    </div>
+                    <div className='container d-flex flex-column'>
+                      <i class='fas fa-pen-square pl-20 edit-user p-2 text-warning'></i>
+                      <Link to={`/pet-delete/${pet._id}`}>
+                        <i class='fas fa-trash p-2 text-danger'></i>
+                      </Link>
                     </div>
                   </div>
                   <div className='mx-5'>
