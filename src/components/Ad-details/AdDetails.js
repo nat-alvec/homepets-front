@@ -4,7 +4,7 @@ import { useParams, useHistory, Link } from 'react-router-dom';
 import api from '../../apis/api'; // Instância do Axios pré-configurada
 
 //Importando Componentes
-import '../ad-details/adDetails.css';
+import './adDetails.css';
 import CarouselComp from '../carousel/Carousel';
 
 function AdDetails() {

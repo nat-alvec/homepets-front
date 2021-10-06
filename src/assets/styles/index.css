@@ -1,1 +1,13 @@
 /* Seus estilos globais vão aqui */
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+body {
+  font-family: 'Poppins';
+  color: #2C303F;
+  font-size: 0.9rem;
+  background-color: white !important;
+}
+
+nav .btnNav {
+  font-size: 0.7rem;
+}
