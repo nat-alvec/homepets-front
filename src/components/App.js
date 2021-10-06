@@ -12,8 +12,8 @@ import Navbar from './Navbar';
 import EditAd from './ad/EditAd';
 import CreateAd from './ad/CreateAd';
 import Home from '../routeComponents/Home';
-import AdDetails from './ad-details/AdDetails';
-import UserDetails from './user-details/User-details';
+import AdDetails from "./ad-details/AdDetails"
+import UserDetails from "./user-details/User-details"
 
 //App Function
 
