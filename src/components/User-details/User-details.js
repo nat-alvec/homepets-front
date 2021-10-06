@@ -148,6 +148,9 @@ function UserDetails() {
                   </div>
                 </>
               ))}
+              <div className='container adPetBtn'>
+              <Link to={`/pet-create`}><button type="button" class="btn btn-warning">Adicionar um novo pet</button></Link>
+                </div>
             </div>
           ) : (
             <h1>Oi</h1>

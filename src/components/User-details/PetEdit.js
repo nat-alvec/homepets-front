@@ -15,7 +15,7 @@ function PetEdit(){
         imageUrl: '',
     })
     
-    const { id } = useParams();
+  const { id } = useParams();
   const history = useHistory();
   const { loggedInUser } = useContext(AuthContext);
     
