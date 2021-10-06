@@ -14,6 +14,7 @@ import CreateAd from './ad/CreateAd';
 import Home from '../routeComponents/Home';
 import AdDetails from "./ad-details/AdDetails"
 import UserDetails from "./user-details/User-details"
+import EditProfile from "./user-details/EditProfile"
 
 //App Function
 
@@ -30,6 +31,7 @@ function App() {
         </Switch>
         <Route exact path='/adv/create' component={CreateAd} />
         <Route exact path='/adv/edit/:id' component={EditAd} />
+        <Route path='/edit-profile/:id' component={EditProfile} />
       </AuthContextComponent>
     </BrowserRouter>
   );

@@ -47,7 +47,7 @@ function AdDetails() {
       >
         {/* LINK PARA VOLTAR À PÁGINA ANTERIOR */}
         <div>
-          <Link to='/detalhes-anuncio'>
+          <Link to='/'>
             <button className='btn btn-danger rounded-pill my-3 mx-5'>
               Home Pets
             </button>
