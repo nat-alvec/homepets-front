@@ -62,12 +62,15 @@ function AdDetails() {
             <div className='first'>
               <div className='time d-flex flex-row align-items-center justify-content-between mt-3'></div>
             </div>
-            <div className='second d-flex flex-row mt-2'>
+            <div className='second d-flex flex-row mt-1'>
               <div className='image mr-3'>
                 <img
                   src={adDetails.user.profilePicUrl}
-                  className='rounded-circle'
-                  width='90'
+                  className='rounded-circle porfPicAd'
+                  style={{
+                    width: '90x',
+                    height: '90px',
+                  }}
                 />
               </div>
               {/* Primera parte do card 1 - Nome e foto do usuário / localização */}
@@ -79,7 +82,6 @@ function AdDetails() {
                   {adDetails.location.country}, {adDetails.location.city}
                 </p>
                 <p className='localizationFont my-0 mx-3'>
-                  {' '}
                   Rua: {adDetails.location.street}, número:{' '}
                   {adDetails.location.number}{' '}
                 </p>
@@ -115,8 +117,8 @@ function AdDetails() {
           <h1 className='titleFont mx-3 my-4'>{adDetails.title}</h1>
         </div>
         {/* CARROSSEL */}
-        <div>
-          <CarouselComp className='carousel' pics={adDetails.picturesUrl} />
+        <div className='carousel'>
+          <CarouselComp pics={adDetails.picturesUrl} />
         </div>
 
         {/* AMENIITES */}
@@ -137,31 +139,34 @@ function AdDetails() {
         </div>
         {/* PETS DO USUÁRIO NO ANÚNCIO */}
         <div>
-
           <h3 className='smallTitle mt-2 mx-4'>Meus pets</h3>
 
           <div className='pets-container d-flex'>
             {adDetails.pets.map((pet) => (
               <>
-              <div className='container d-flex'>
-                <div className='p-2 bd-highlight'>
-                  <img
-                    src={pet.imageUrl}
-                    alt='Pet picture'
-                    className='rounded-circle mx-1 p-3'
-                    width='150px'
-                  />
+                <div className='container d-flex'>
+                  <div className='p-2 bd-highlight'>
+                    <img
+                      src={pet.imageUrl}
+                      alt='Pet picture'
+                      className='rounded-circle mx-1 p-3'
+                      width='150px'
+                      style={{
+                        width: '150px',
+                        height: '150px',
+                      }}
+                    />
+                  </div>
+                  <div className='p-2 bd-highlight'>
+                    <h3 className='pet-name mt-4'>Nome: {pet.name}</h3>
+                    <p className='textsFonts'>Raça: {pet.breed}</p>
+                    <p className='textsFonts mb-0'>Idade: {pet.age}</p>
+                  </div>
                 </div>
-                <div className='p-2 bd-highlight'>
-                  <h3 className='pet-name mt-4'>Nome: {pet.name}</h3>
-                  <p className='textsFonts'>Raça: {pet.breed}</p>
-                  <p className='textsFonts mb-0'>Idade: {pet.age}</p>
+                <div className='mx-5'>
+                  <hr className='my-4 line' />
                 </div>
-              </div>
-              <div className='mx-5'>
-                <hr className='my-4 line' />
-              </div>
-            </>
+              </>
             ))}
           </div>
         </div>

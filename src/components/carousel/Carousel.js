@@ -9,6 +9,10 @@ function CarouselComp(props) {
       className="d-block w-100"
       src={image}
       alt="First slide"
+      style={{ 
+        width: '290px',
+        height: '450px'
+      }}
     />
   </Carousel.Item>
     )}

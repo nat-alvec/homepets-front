@@ -67,8 +67,11 @@ function UserDetails() {
                   <img
                     src={userDetails.profilePicUrl}
                     alt='User profile picture'
-                    className='rounded-circle mx-1 p-3'
-                    width='300px'
+                    className='rounded-circle mx-1 p-3 picUserPof'
+                    style={{
+                      height: '250px',
+                      width: '250px',
+                    }}
                   />
                 </a>
               </div>
@@ -116,8 +119,12 @@ function UserDetails() {
                       <img
                         src={pet.imageUrl}
                         alt='Pet picture'
-                        className='rounded-circle mx-1 p-3'
+                        className='rounded-circle mx-1 p-3 pet-image'
                         width='150px'
+                        style={{
+                          width: '150px',
+                          height: '150px',
+                        }}
                       />
                     </div>
                     <div className='p-2 bd-highlight'>

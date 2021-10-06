@@ -72,6 +72,12 @@ body{margin-top:0px;
     .media > .pull-left {
       padding-right: 10px;
     }
+
+    .media-left{
+      object-fit: cover;
+      width: 110px;
+      height: 110px;
+    }
     .media-left,
     .media-right,
     .media-body {
@@ -234,6 +240,16 @@ body{margin-top:0px;
         background: #FFF;
         border-color: #DDD;
         border-top: 1px solid #FFF;
+      }
+
+      .pet-image{
+        object-fit: cover;
+        width: 100%;
+      }
+
+      .picUserPof{
+        object-fit: cover;
+        width: 100%;
       }
 
       
