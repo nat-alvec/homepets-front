@@ -27,6 +27,10 @@ body{margin-top:0px;
         flex-direction: column;
     }
 
+    .adPetBtn{
+      text-align: center;
+    }
+
     .icon-style{
         color:rgb(255, 255, 255);
         font-size: 25px;

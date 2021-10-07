@@ -66,9 +66,10 @@ function AdDetails() {
               <div className='image mr-3'>
                 <img
                   src={adDetails.user.profilePicUrl}
-                  className='rounded-circle porfPicAd'
+                  className='rounded-circle profPicAd'
+                  width='90px'
                   style={{
-                    width: '90x',
+                    width: '90px',
                     height: '90px',
                   }}
                 />

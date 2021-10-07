@@ -1,34 +1,34 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import TextInput from '../form/TextInput';
-import TextAreaInput from '../form/TextArea';
 import ProfilePicForm from '../form/ProfilePicForm';
 import { AuthContext } from '../../contexts/authContext';
 
 import api from '../../apis/api';
 
-function EditProfile() {
-  const [state, setState] = useState({
-    name: '',
-    email: '',
-    personalDesc: '',
-    profilePicUrl: '',
-  });
-
+function PetEdit(){
+    
+    const [state, setState] = useState({
+        name: '',
+        breed: '',
+        age: '',
+        imageUrl: '',
+    })
+    
   const { id } = useParams();
   const history = useHistory();
   const { loggedInUser } = useContext(AuthContext);
-
+    
   useEffect(() => {
-    async function fetchUserDetails() {
+    async function fetchPetDetails() {
       try {
-        const response = await api.get(`/profile/${id}`);
+        const response = await api.get(`/pet/${id}`);
         setState({ ...response.data });
       } catch (error) {
         console.error(error);
       }
     }
-    fetchUserDetails();
+    fetchPetDetails();
   }, [id]);
 
   function handleChange(event) {
@@ -39,51 +39,52 @@ function EditProfile() {
     event.preventDefault();
 
     api
-      .patch(`/profile/${id}`, { ...state })
+      .patch(`/pet/${id}`, { ...state })
       .then(() => {
-        history.push(`/detalhes-usuario/${id}`);
+        history.push(`/detalhes-usuario/${loggedInUser.user._id}`);
       })
       .catch((err) => {
         console.error(err);
       });
   }
-
-  return (
-    <div className='container mt-4' style={{ maxWidth: '650px' }}>
+    
+    
+    return(
+        <div className='container mt-4' style={{ maxWidth: '650px' }}>
       <form onSubmit={handleSubmit} className='m-2'>
         <h1>Editar Informações de usuário</h1>
         <TextInput
           type='text'
-          label='Nome e sobrenome'
-          id='userName'
+          label='Nome do seu pet'
+          id='petName'
           name='name'
           onChange={handleChange}
           value={state.name}
         />
         <TextInput
           type='text'
-          label='email'
-          id='userEmail'
-          name='email'
+          label='Raça'
+          id='petBreed'
+          name='breed'
           onChange={handleChange}
-          value={state.email}
+          value={state.breed}
         />
-        <TextAreaInput
+        <TextInput
           type='text'
-          label='Biografia'
-          id='personalDescription'
-          name='personalDesc'
+          label='Idade'
+          id='petAge'
+          name='age'
           onChange={handleChange}
-          value={state.personalDesc}
+          value={state.age}
         />
         <ProfilePicForm
           type='text'
           className='form-control'
           aria-label='text input'
-          name='profilePicUrl'
-          value={state.profilePicUrl}
+          name='imageUrl'
+          value={state.imageUrl}
           onChange={handleChange}
-          placeholder='Nova foto de perfil'
+          placeholder='Foto do seu pet'
         />
 
         <button type='submit' className='btn btn-primary my-3 d-block'>
@@ -91,7 +92,7 @@ function EditProfile() {
         </button>
       </form>
     </div>
-  );
+    )
 }
 
-export default EditProfile;
+export default PetEdit;

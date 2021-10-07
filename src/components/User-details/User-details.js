@@ -135,7 +135,9 @@ function UserDetails() {
                       <p className='textsFonts mb-0'>Idade: {pet.age}</p>
                     </div>
                     <div className='container d-flex flex-column'>
-                      <i class='fas fa-pen-square pl-20 edit-user p-2 text-warning'></i>
+                      <Link to={`/pet-edit/${pet._id}`}>
+                        <i class='fas fa-pen-square pl-20 edit-user p-2 text-warning'></i>
+                      </Link>
                       <Link to={`/pet-delete/${pet._id}`}>
                         <i class='fas fa-trash p-2 text-danger'></i>
                       </Link>
@@ -146,6 +148,9 @@ function UserDetails() {
                   </div>
                 </>
               ))}
+              <div className='container adPetBtn'>
+              <Link to={`/pet-create`}><button type="button" class="btn btn-warning">Adicionar um novo pet</button></Link>
+                </div>
             </div>
           ) : (
             <h1>Oi</h1>
