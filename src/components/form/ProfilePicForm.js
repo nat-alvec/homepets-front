@@ -2,7 +2,7 @@ function ProfilePicForm(props){
     return(
         <>
         <input
-        type='text'
+        type='file'
         className='form-control'
         aria-label='text input'
         name={props.name}
