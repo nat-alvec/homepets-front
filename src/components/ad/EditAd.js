@@ -20,16 +20,16 @@ function EditAd() {
       startDate: new Date().toISOString().split('T')[0],
       endDate: new Date().toISOString().split('T')[0],
     },
-    location: {},
+    location: {country: "", city: "", street: "", number: ""},
     amenities: [],
   });
-
+  
   const [pets, setPets] = useState([]);
-
+  
   const { id } = useParams();
   const history = useHistory();
   const { loggedInUser } = useContext(AuthContext);
-
+  
   useEffect(() => {
     async function fetchAd() {
       try {
@@ -122,9 +122,10 @@ function EditAd() {
         ...state,
       });
       console.log(response);
-      history.push('/');
+      history.push(`/detalhes-usuario/${loggedInUser.user._id}`);
     } catch (err) {
       console.log(err.response);
+      alert("Preencha todos os campos")
     }
   }
 
@@ -296,7 +297,7 @@ function EditAd() {
         />
 
         <button type='submit' className='btn btn-primary my-3 d-block'>
-          Criar
+          Editar
         </button>
       </form>
     </div>

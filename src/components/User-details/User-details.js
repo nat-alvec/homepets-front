@@ -2,6 +2,7 @@
 import api from '../../apis/api'; // Instância do Axios pré-configurada
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import UserAds from './UserAds';
 
 //Importado Componentes
 import './userDetails.css';
@@ -148,7 +149,7 @@ function UserDetails() {
               ))}
             </div>
           ) : (
-            <h1>Oi</h1>
+            <UserAds />
           )}
         </div>
       </div>

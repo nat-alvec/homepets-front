@@ -9,6 +9,7 @@ import AuthRouter from '../routeComponents/auth/AuthRouter';
 
 //Importing components
 import Navbar from './Navbar';
+import NavBarResponsive from './NavBarResponsive';
 import EditAd from './ad/EditAd';
 import CreateAd from './ad/CreateAd';
 import Home from '../routeComponents/Home';
@@ -16,6 +17,8 @@ import AdDetails from "./ad-details/AdDetails"
 import UserDetails from "./user-details/User-details"
 import EditProfile from "./user-details/EditProfile"
 import PetDelete from './user-details/PetDelete';
+import DeleteAd from './ad/DeleteAd';
+import Info from './Info';
 
 //App Function
 
@@ -23,7 +26,7 @@ function App() {
   return (
     <BrowserRouter>
       <AuthContextComponent>
-        <Navbar />
+        <NavBarResponsive />
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/auth' component={AuthRouter} />
@@ -32,8 +35,10 @@ function App() {
         </Switch>
         <Route exact path='/adv/create' component={CreateAd} />
         <Route exact path='/adv/edit/:id' component={EditAd} />
+        <Route path='/adv/delete/:id' component={DeleteAd} />
         <Route path='/edit-profile/:id' component={EditProfile} />
         <Route path='/pet-delete/:id' component={PetDelete} />
+        <Route path="/info" component={Info} />
       </AuthContextComponent>
     </BrowserRouter>
   );
