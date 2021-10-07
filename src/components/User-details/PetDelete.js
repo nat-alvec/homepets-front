@@ -20,7 +20,7 @@ function PetDelete() {
       }
     }
     deletePet();
-  }, [id, history]);
+  }, [id, history, loggedInUser.user._id]);
 
   return (
     <div className='container mt-5 text-center'>

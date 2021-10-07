@@ -1,10 +1,10 @@
 function convertToAnimalIcons(arr) {
   let [dogNumber, catNumber, fishNumber, birdNumber] = [0, 0, 0, 0];
 
-  dogNumber = arr.filter((elem) => elem.species === 'dog').length;
-  catNumber = arr.filter((elem) => elem.species === 'cat').length;
-  fishNumber = arr.filter((elem) => elem.species === 'fish').length;
-  birdNumber = arr.filter((elem) => elem.species === 'bird').length;
+  dogNumber = arr.filter((elem) => elem.species === 'cachorro').length;
+  catNumber = arr.filter((elem) => elem.species === 'gato').length;
+  fishNumber = arr.filter((elem) => elem.species === 'peixe').length;
+  birdNumber = arr.filter((elem) => elem.species === 'pássaro').length;
   const total = dogNumber + catNumber + fishNumber + birdNumber;
 
   const othersNumber = arr.length - total;

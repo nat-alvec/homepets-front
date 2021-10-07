@@ -1,6 +1,5 @@
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 
-import { Link } from 'react-router-dom';
 import logo from './images/pet-house.png';
 import logoBrand from './images/homepets-brand.png';
 import { useContext } from 'react';
@@ -19,11 +18,7 @@ function NavBarResponsive() {
     >
       <Container className='m-0'>
         <Navbar.Brand className="ms-0" href='/'>
-          <Link
-            className='navbar-brand d-flex justify-content-between align-items-center m-0 p-0'
-            style={{ width: '100px' }}
-            to='/'
-          >
+          
             <img
               className='is-logo'
               src={logo}
@@ -38,7 +33,7 @@ function NavBarResponsive() {
               width='65'
               height='35'
             />
-          </Link>
+        
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
         <Navbar.Collapse id='responsive-navbar-nav'>

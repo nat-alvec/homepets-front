@@ -8,7 +8,6 @@ import AuthRouter from '../routeComponents/auth/AuthRouter';
 //import PrivateRoute from '../routeComponents/auth/PrivateRoute';
 
 //Importing components
-import Navbar from './Navbar';
 import NavBarResponsive from './NavBarResponsive';
 import EditAd from './ad/EditAd';
 import CreateAd from './ad/CreateAd';
@@ -21,6 +20,7 @@ import DeleteAd from './ad/DeleteAd';
 import Info from './Info';
 import PetEdit from './user-details/PetEdit';
 import PetCreate from './user-details/PetCreate';
+import DeleteReview from './review/DeleteReview';
 
 //App Function
 
@@ -43,6 +43,7 @@ function App() {
         <Route path='/info' component={Info} />
         <Route path='/pet-edit/:id' component={PetEdit} />
         <Route path='/pet-create' component={PetCreate} />
+        <Route path='/review-delete/:id' component={DeleteReview} />
       </AuthContextComponent>
     </BrowserRouter>
   );

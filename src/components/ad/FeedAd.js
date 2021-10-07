@@ -27,7 +27,6 @@ function FeedAd(props) {
   }, []);
 
   function filterCards(searchTerm) {
-    console.log('teste123')
     const normalizedSearchTerm = searchTerm.toLowerCase();
     
     if (!searchTerm) {
