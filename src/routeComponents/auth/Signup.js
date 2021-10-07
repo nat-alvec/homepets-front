@@ -46,7 +46,7 @@ function Signup(props) {
   }
 
   return (
-    <div className='container mt-4'>
+    <div className='container mt-4 w-50'>
       <h4>Preencha os campos abaixo pra você se tornar um membro Homepets</h4>
       <form onSubmit={handleSubmit}>
         <div className='mb-3 mt-4'>

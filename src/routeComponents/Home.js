@@ -6,9 +6,10 @@ import brandName from '../components/images/homepets-brand.png';
 import FeedAd from '../components/ad/FeedAd';
 
 function Home() {
+  
   return (
     <div className='mb-4'>
-      <div className='card text-dark mx-4 mt-4'>
+      <div className='card text-dark mx-2 mt-2'>
         <img
           src={dogHomepage}
           className='card-img'
@@ -34,18 +35,18 @@ function Home() {
         </div>
       </div>
       <div className='text-center d-flex flex-column justify-content-center align-items-center'>
-        <div className='mt-5 mb-4'>
-          <img src={logo} alt='homepets logo' width='70px' height='70px' />
+        <div className='mt-4 mb-0'>
+          <img src={logo} alt='homepets logo' width='50px' height='50px' />
           <img
             src={brandName}
             alt='homepets logo'
-            width='130px'
-            height='70px'
+            width='92.86px'
+            height='50px'
           />
         </div>
         <div>
-          <p className='mt-4 mb-5' style={{ fontSize: '24px' }}>
-            Explore e descubra centenas de casas e pets
+          <p className='mt-4 mb-4' style={{ fontSize: '24px' }}>
+            Explore e descubra centenas de casas e pets!
           </p>
         </div>
         <FeedAd />

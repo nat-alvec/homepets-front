@@ -50,7 +50,7 @@ function Login(props) {
   }
 
   return (
-    <div className='container mt-4'>
+    <div className='container mt-4 d-flex justify-content-center w-75'>
       <form onSubmit={handleSubmit}>
         <h4>Preencha seus dados para entrar</h4>
 
@@ -90,7 +90,7 @@ function Login(props) {
         <button type='submit' className='btn btn-primary'>
           Login
         </button>
-        <Link to='/auth/signup' className='link-primary fs-5 d-block mt-3'>
+        <Link to='/auth/signup' className='link-primary fs-6 d-block mt-3'>
           Não possui cadastro? Clique aqui para se cadastrar!
         </Link>
       </form>

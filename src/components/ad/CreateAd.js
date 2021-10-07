@@ -137,6 +137,7 @@ function CreateAd() {
       history.push('/');
     } catch (err) {
       console.error(err.response);
+      alert("Preencha todos os campos")
     }
   }
   return (
