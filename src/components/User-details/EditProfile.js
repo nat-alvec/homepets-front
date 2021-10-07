@@ -1,9 +1,9 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import TextInput from '../form/TextInput';
 import TextAreaInput from '../form/TextArea';
 import ProfilePicForm from '../form/ProfilePicForm';
-import { AuthContext } from '../../contexts/authContext';
+//import { AuthContext } from '../../contexts/authContext';
 
 import api from '../../apis/api';
 
@@ -17,7 +17,7 @@ function EditProfile() {
 
   const { id } = useParams();
   const history = useHistory();
-  const { loggedInUser } = useContext(AuthContext);
+  //const { loggedInUser } = useContext(AuthContext);
 
   useEffect(() => {
     async function fetchUserDetails() {

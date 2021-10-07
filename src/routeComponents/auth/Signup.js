@@ -99,7 +99,7 @@ function Signup(props) {
         <button type='submit' className='btn btn-primary'>
           Cadastrar
         </button>
-        <Link to='/auth/login' className='link-primary fs-5 d-block mt-3'>
+        <Link to='/auth/login' className='link-primary fs-6 d-block mt-3'>
           Já está cadastrado? Clique aqui para entrar!
         </Link>
       </form>

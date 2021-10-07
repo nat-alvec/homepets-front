@@ -9,10 +9,14 @@ function Searchbar(props) {
 
   useEffect(() => {
     async function search() {
-      props.onChange(searchTerm)
+      try {
+        props.onChange(searchTerm);
+      } catch (err) {
+        console.error(err);
+      }
     }
-    search()
-  }, [searchTerm])
+    search();
+  }, [searchTerm]);
 
   return (
     <div className='container mt-0 mb-4 d-flex flex-column justify-content-center align-items-center'>

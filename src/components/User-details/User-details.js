@@ -68,11 +68,12 @@ function UserDetails() {
               <div className='media-left pr30'>
                 <img
                   src={userDetails.profilePicUrl}
-                  alt='User profile picture'
+                  alt='User profile'
                   className='rounded-circle mx-1 p-3 picUserPof'
                   style={{
                     height: '250px',
                     width: '250px',
+                    objectFit: 'cover',
                   }}
                 />
               </div>
@@ -83,7 +84,7 @@ function UserDetails() {
                   <ul className='list-inline list-unstyled'>
                     <li>
                       <a href={`mailto:${userDetails.email}`}>
-                        <i class='fas fa-envelope icon-style'></i>
+                        <i className='fas fa-envelope icon-style'></i>
                       </a>
                     </li>
                   </ul>
@@ -91,13 +92,13 @@ function UserDetails() {
                 {/* LINK PARA EDITAR USUÁRIO */}
                 <div className='container d-flex justify-content-end mt-4'>
                   <Link to={`/edit-profile/${id}`}>
-                    <i class='fas fa-pen-square pl-20 edit-user'></i>
+                    <i className='fas fa-pen-square pl-20 edit-user'></i>
                   </Link>
                 </div>
               </div>
             </div>
             {/* CARD COM ANÚNCIOS E PETS DO USUÁRIO */}
-            <div class='tab-block d-flex justify-content-around'>
+            <div className='tab-block d-flex justify-content-around'>
               <button
                 className='btn btn-danger rounded-pill my-3'
                 onClick={handleShowAdvs}
@@ -121,12 +122,13 @@ function UserDetails() {
                     <div className='container'>
                       <img
                         src={pet.imageUrl}
-                        alt='Pet picture'
+                        alt='Pet'
                         className='rounded-circle mx-1 p-3 pet-image'
                         width='150px'
                         style={{
                           width: '150px',
                           height: '150px',
+                          objectFit: 'cover',
                         }}
                       />
                     </div>
@@ -137,21 +139,25 @@ function UserDetails() {
                     </div>
                     <div className='container d-flex flex-column'>
                       <Link to={`/pet-edit/${pet._id}`}>
-                        <i class='fas fa-pen-square pl-20 edit-user p-2 text-warning'></i>
+                        <i className='fas fa-pen-square pl-20 edit-user p-2 text-warning'></i>
                       </Link>
                       <Link to={`/pet-delete/${pet._id}`}>
-                        <i class='fas fa-trash p-2 text-danger'></i>
+                        <i className='fas fa-trash p-2 text-danger'></i>
                       </Link>
                     </div>
                   </div>
                   <div className='mx-5'>
-                    <hr className='my-4 line' />
+                    <hr className='my-2 line' />
                   </div>
                 </>
               ))}
               <div className='container adPetBtn'>
-              <Link to={`/pet-create`}><button type="button" class="btn btn-warning">Adicionar um novo pet</button></Link>
-                </div>
+                <Link to={`/pet-create`}>
+                  <button type='button' className='btn btn-warning mt-2'>
+                    Adicionar um novo pet
+                  </button>
+                </Link>
+              </div>
             </div>
           ) : (
             <UserAds />

@@ -1,11 +1,15 @@
 //Importando configurações e bibliotecas
 import { useState, useEffect } from 'react';
-import { useParams, useHistory, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import api from '../../apis/api'; // Instância do Axios pré-configurada
 
 //Importando Componentes
 import './adDetails.css';
 import CarouselComp from '../carousel/Carousel';
+import Reviews from '../review/Reviews';
+
+//Importando funções
+import convertDate from '../../assets/functions/convertDate';
 
 function AdDetails() {
   const [hasError, setHasError] = useState(false);
@@ -48,13 +52,13 @@ function AdDetails() {
         {/* LINK PARA VOLTAR À PÁGINA ANTERIOR */}
         <div>
           <Link to='/'>
-            <button className='btn btn-danger rounded-pill my-3 mx-5'>
+            <button className='btn btn-danger rounded-pill my-0 mx-5'>
               Home Pets
             </button>
           </Link>
         </div>
         {/* CARD DE DISPONIBILIDADE E INFORMAÇÕES DE CONTATO */}
-        <div className='container mt-2 d-flex justify-content-center'>
+        <div className='container mt-1 d-flex justify-content-center'>
           <div
             className='card p-4 my-3 adv-first-card '
             style={{ width: '98vw', maxWidth: '740px' }}
@@ -66,11 +70,13 @@ function AdDetails() {
               <div className='image mr-3'>
                 <img
                   src={adDetails.user.profilePicUrl}
+                  alt='profile'
                   className='rounded-circle profPicAd'
                   width='90px'
                   style={{
                     width: '90px',
                     height: '90px',
+                    objectFit: 'cover',
                   }}
                 />
               </div>
@@ -90,32 +96,24 @@ function AdDetails() {
               {/* Segunda Parte do card 1 - Data de cuidado dos pets */}
             </div>
             <hr className='line-color' />
-            <h6 className='subtitleFont'>Período de cuidado dos pets:</h6>
+            <h6 className='subtitleFont'>Imóvel e pets disponível em:</h6>
             <p>
-              {
-                new Date(adDetails.availableDates.startDate)
-                  .toLocaleString()
-                  .split(',')[0]
-              }
-              à
-              {
-                new Date(adDetails.availableDates.endDate)
-                  .toLocaleString()
-                  .split(',')[0]
-              }
+              {convertDate(adDetails.availableDates.startDate)}
+              <span> à </span>
+              {convertDate(adDetails.availableDates.endDate)}
             </p>
             <hr className='line-color' />
             {/* CONTATO */}
             <div className='third mt-2 mx-3'>
               <a href={`mailto:${adDetails.user.email}`}>
-                <i class='fas fa-envelope icon-style'></i>
+                <i className='fas fa-envelope icon-style'></i>
               </a>
             </div>
           </div>
         </div>
         {/* TÍTULO DO ANÚNCIO */}
         <div>
-          <h1 className='titleFont mx-3 my-4'>{adDetails.title}</h1>
+          <h1 className='titleFont mx-3 mt-4 mb-5'>{adDetails.title}</h1>
         </div>
         {/* CARROSSEL */}
         <div className='carousel'>
@@ -124,37 +122,41 @@ function AdDetails() {
 
         {/* AMENIITES */}
         <div className='container d-flex flex-row bd-highlight mb-3 mx-2'>
-          <h3 className='smallTitle mt-2'>Características desse lugar:</h3>
-          {adDetails.amenities.map((amenitie) => (
-            <button className='btn btn-outline-dark btn-sm'>{amenitie}</button>
+          <h3 className='smallTitle mt-2 me-3'>Comodidades:</h3>
+          {adDetails.amenities.map((amenitie, index) => (
+            <button key={index} className='btn btn-outline-dark btn-sm'>{amenitie}</button>
           ))}
         </div>
         {/* SOBRE MIM DE CADA USER */}
         <div>
-          <h3 className='smallTitle mt-2 mx-4'>Sobre mim</h3>
+          <h3 className='smallTitle my-3 mx-4'>Sobre mim</h3>
           <p className='textsFonts mx-4'>{adDetails.intro}</p>
-          <h3 className='smallTitle mt-2 mx-4'>Sobre a casa</h3>
+          <h3 className='smallTitle my-3 mx-4'>Sobre a casa</h3>
           <p className='textsFonts mx-4'>{adDetails.homeinfo}</p>
-          <h3 className='smallTitle mt-2 mx-4'>Responsabilidades</h3>
+          <h3 className='smallTitle my-3 mx-4'>Responsabilidades</h3>
           <p className='textsFonts mx-4'>{adDetails.duties}</p>
         </div>
         {/* PETS DO USUÁRIO NO ANÚNCIO */}
         <div>
-          <h3 className='smallTitle mt-2 mx-4'>Meus pets</h3>
+          <h3 className='smallTitle mt-3 mb-0 mx-4'>Meus pets</h3>
 
           <div className='pets-container d-flex'>
-            {adDetails.pets.map((pet) => (
-              <>
-                <div className='container d-flex'>
+            {adDetails.pets.map((pet, index) => (
+              <div key={index}>
+                <div
+                  className='container d-flex mt-0'
+                  style={{ height: '140px' }}
+                >
                   <div className='p-2 bd-highlight'>
                     <img
                       src={pet.imageUrl}
-                      alt='Pet picture'
+                      alt='Pet'
                       className='rounded-circle mx-1 p-3'
                       width='150px'
                       style={{
                         width: '150px',
                         height: '150px',
+                        objectFit: 'cover',
                       }}
                     />
                   </div>
@@ -165,11 +167,15 @@ function AdDetails() {
                   </div>
                 </div>
                 <div className='mx-5'>
-                  <hr className='my-4 line' />
+                  <hr className='my-1 line-dark' />
                 </div>
-              </>
+              </div>
             ))}
           </div>
+        </div>
+        {/* Comentários */}
+        <div>
+          <Reviews />
         </div>
       </div>
     </div>

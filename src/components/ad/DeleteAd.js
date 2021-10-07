@@ -7,7 +7,7 @@ function DeleteAd() {
   const { id } = useParams();
   const history = useHistory();
   const { loggedInUser } = useContext(AuthContext);
-  console.log(id);
+
 
   async function deleteThisAd() {
     try {

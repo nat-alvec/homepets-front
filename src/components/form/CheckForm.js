@@ -12,7 +12,7 @@ function CheckForm(props) {
               id='inlineCheckbox'
               value={elem}
               onChange={props.handle}
-              checked={props.marked ? props.marked.includes(elem) : false}
+              checked={props.marked ? props.marked.includes(elem) : null}
             />
             <label className='form-check-label' htmlFor='inlineCheckbox'>
               {elem}
