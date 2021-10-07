@@ -20,16 +20,33 @@ function PetCreate() {
   });
 
   function handleChange(event) {
+
+    if (event.target.files) {
+      return setState({ ...state, [event.target.name]: event.target.files[0] });
+    }
+
     setState({ ...state, [event.target.name]: event.target.value });
+  }
+
+  async function handleUpload(files) {
+    const uploadData = new FormData();
+
+    uploadData.append('petImg', files);
+
+    const response = await api.post('/imagepet-upload', uploadData);
+
+    return response.data.url;
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
 
     try {
+      const imageUrl = await handleUpload(state.imageUrl);
+
       const response = await api.post('/pet', {
         ...state,
-        user: loggedInUser.user._id,
+        user: loggedInUser.user._id, imageUrl,
       });
 
       console.log(response);
@@ -52,11 +69,10 @@ function PetCreate() {
         />
 
         <ProfilePicForm
-          type='text'
+          type='file'
           className='form-control'
           aria-label='text input'
           name='imageUrl'
-          value={state.imageUrl}
           onChange={handleChange}
           placeholder='Foto do seu pet'
         />

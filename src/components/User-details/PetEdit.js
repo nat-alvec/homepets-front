@@ -32,20 +32,39 @@ function PetEdit(){
   }, [id]);
 
   function handleChange(event) {
+
+    if (event.target.files) {
+      return setState({ ...state, [event.target.name]: event.target.files[0] });
+    }
+
     setState({ ...state, [event.target.name]: event.target.value });
+  }
+
+  async function handleUpload(files) {
+    const uploadData = new FormData();
+
+    uploadData.append('petImg', files);
+
+    const response = await api.post('/imagepet-upload', uploadData);
+
+    return response.data.url;
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
 
-    api
-      .patch(`/pet/${id}`, { ...state })
-      .then(() => {
-        history.push(`/detalhes-usuario/${loggedInUser.user._id}`);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    try {
+
+      const imageUrl = await handleUpload(state.imageUrl);
+
+      const response = await api.patch(`/pet/${id}`, { ...state, imageUrl })
+
+      console.log(response.data);
+
+      history.push(`/detalhes-usuario/${loggedInUser.user._id}`);
+    } catch (error) {
+      console.error(error.response);
+    }
   }
     
     
@@ -78,11 +97,10 @@ function PetEdit(){
           value={state.age}
         />
         <ProfilePicForm
-          type='text'
+          type='file'
           className='form-control'
           aria-label='text input'
           name='imageUrl'
-          value={state.imageUrl}
           onChange={handleChange}
           placeholder='Foto do seu pet'
         />
