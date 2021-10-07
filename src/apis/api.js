@@ -2,7 +2,7 @@ import axios from "axios";
 
 const apis = {
   development: "http://localhost:4000/api/v1",
-  production: "A URL DO SEU SERVIDOR DEPLOYADO NO HEROKU AQUI",
+  production: "https://homepets.herokuapp.com/api/v1",
 };
 
 // Pré-configurando a URL padrão do nosso backend em uma instância do Axios
