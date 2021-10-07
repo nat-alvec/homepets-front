@@ -13,12 +13,14 @@ import NavBarResponsive from './NavBarResponsive';
 import EditAd from './ad/EditAd';
 import CreateAd from './ad/CreateAd';
 import Home from '../routeComponents/Home';
-import AdDetails from "./ad-details/AdDetails"
-import UserDetails from "./user-details/User-details"
-import EditProfile from "./user-details/EditProfile"
+import AdDetails from './ad-details/AdDetails';
+import UserDetails from './user-details/User-details';
+import EditProfile from './user-details/EditProfile';
 import PetDelete from './user-details/PetDelete';
 import DeleteAd from './ad/DeleteAd';
 import Info from './Info';
+import PetEdit from './user-details/PetEdit';
+import PetCreate from './user-details/PetCreate';
 
 //App Function
 
@@ -38,7 +40,9 @@ function App() {
         <Route path='/adv/delete/:id' component={DeleteAd} />
         <Route path='/edit-profile/:id' component={EditProfile} />
         <Route path='/pet-delete/:id' component={PetDelete} />
-        <Route path="/info" component={Info} />
+        <Route path='/info' component={Info} />
+        <Route path='/pet-edit/:id' component={PetEdit} />
+        <Route path='/pet-create' component={PetCreate} />
       </AuthContextComponent>
     </BrowserRouter>
   );
