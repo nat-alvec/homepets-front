@@ -6,6 +6,7 @@ import convertDate from '../../assets/functions/convertDate';
 import convertToAnimalIcons from '../../assets/functions/convertToAnimalIcons';
 
 function UserAds() {
+
   const [ads, setAds] = useState([]);
   const { id } = useParams();
 

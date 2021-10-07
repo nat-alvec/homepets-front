@@ -32,20 +32,36 @@ function EditProfile() {
   }, [id]);
 
   function handleChange(event) {
+    if (event.target.files) {
+      return setState({ ...state, [event.target.name]: event.target.files[0] });
+    }
+
     setState({ ...state, [event.target.name]: event.target.value });
+  }
+
+  async function handleUpload(files) {
+    const uploadData = new FormData();
+
+    uploadData.append('picture', files);
+
+    const response = await api.post('image-upload', uploadData);
+
+    return response.data.url;
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
 
-    api
-      .patch(`/profile/${id}`, { ...state })
-      .then(() => {
-        history.push(`/detalhes-usuario/${id}`);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    try {
+      const profilePicUrl = await handleUpload(state.profilePicUrl);
+
+      const response = api.patch(`/profile/${id}`, { ...state, profilePicUrl });
+
+      console.log(response);
+      history.push(`/detalhes-usuario/${id}`);
+    } catch (error) {
+      console.error(error.response);
+    }
   }
 
   return (
@@ -77,11 +93,10 @@ function EditProfile() {
           value={state.personalDesc}
         />
         <ProfilePicForm
-          type='text'
+          type='file'
           className='form-control'
           aria-label='text input'
           name='profilePicUrl'
-          value={state.profilePicUrl}
           onChange={handleChange}
           placeholder='Nova foto de perfil'
         />
