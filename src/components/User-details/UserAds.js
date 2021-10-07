@@ -1,21 +1,23 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import api from '../../apis/api';
 
 import convertDate from '../../assets/functions/convertDate';
 import convertToAnimalIcons from '../../assets/functions/convertToAnimalIcons';
 
 function UserAds() {
+  const { id } = useParams();
+
   const [ads, setAds] = useState([]);
 
   useEffect(() => {
     async function fetchAds() {
       try {
-        const response = await api.get('/adv');
-        response.data.sort((a, b) => {
+        const response = await api.get(`/profile/${id}`);
+        response.data.ads.sort((a, b) => {
           return b._id.localeCompare(a._id);
         });
-        setAds([...response.data]);
+        setAds([...response.data.ads]);
       } catch (err) {
         console.error(err);
       }
