@@ -9,6 +9,7 @@ function UserAds() {
   const { id } = useParams();
 
   const [ads, setAds] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
     async function fetchAds() {
@@ -23,8 +24,8 @@ function UserAds() {
       }
     }
     fetchAds();
-  }, []);
-
+  }, [id]);
+  
   return (
     <div className='row d-flex justify-content-around'>
       {ads.map((elem, index) => {

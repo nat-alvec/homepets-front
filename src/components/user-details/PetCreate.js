@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import TextInput from '../form/TextInput';
 import DropdownMenu from '../form/DropDownMenu';
 import ProfilePicForm from '../form/ProfilePicForm';

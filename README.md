@@ -1,31 +1,26 @@
-![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
+<img src="https://home-pets.netlify.app/static/media/pet-house.5cc12664.png" alt="drawing" width="100"/> <img src="https://home-pets.netlify.app/static/media/homepets-brand.1930674e.png" alt="drawing" width="210"/>
 
-# React IronPlate
+# Homepets
 
-Esse boilerplate já inclui:
+## Sobre
+Cuide de um Pet em qualquer lugar do mundo.
+Hospede-se de graça e cuide de um bichinho fofinho!
 
-- Pré-configuração do Axios para injeção de cabeçalhos de autenticação e BaseURL
-- Context para armazenar state de usuário logado
-- Forms de Login e Signup
-- Roteamento básico
-- Componente de rota protegida
+## Como usar
 
-## Para Começar
+Um site pra que as pessoas possam unir o amor pelos animais e o prazer de viajar. Basta se cadastrar e começar a pesquisar imóveis, pets, cidades ou anunciar o seu imóvel!
+O usuário deixa disponível um imóvel, com seus Pets, que precisam de cuidado. Outra pessoa se disponibiliza pra ficar hospedado na casa e tomar conta dos pets.
 
-- Faça o fork e clone deste repositório
+## Experimente
+- [Homepets](https://home-pets.netlify.app/)
 
-## Instalação
+## Conheça mais sobre como construímos o projeto
 
-```shell
-$ npm install
-```
+- [Apresentação](https://docs.google.com/presentation/d/13jFMj7Hv5VTCvFjlD9UnCFsIb6afE7D8mTHsSFDWaSU/edit?usp=sharing)
+### Sobre nós
 
-## Deploy no Netlify
+- Natália Alves: [Linkedin](https://www.linkedin.com/in/nat%C3%A1lia-alves-5b00891b9/) / [GitHub](https://github.com/nat-alvec)
+- Sander Iwase: [Linkedin](https://www.linkedin.com/in/sanderiwase/) / [GitHub](https://github.com/sanderiw)
 
-1. Faça login no Netlify e selecione seu repositório
-2. Em 'Deploy settings > build command' escreva: CI=false npm run build
-3. Em 'publish directory' escreva: build/
-4. Adicione uma environment variable (variável de ambiente) REACT_APP_API_BASE com a URL da sua API funcionando no Heroku
-5. Adicione a URL do seu app hospedado no Netlify nas variáveis de ambiente do backend no Heroku
-
-Happy coding! 💙
+### Links do Servidor e Cliente do projeto
+- HomePets 🐶 - [Server](https://github.com/sanderiw/homepets-back) & [Client](https://github.com/sanderiw/homepets-front)
