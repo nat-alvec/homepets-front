@@ -16,7 +16,7 @@ O usuário deixa disponível um imóvel, com seus Pets, que precisam de cuidado.
 
 ## Conheça mais sobre como construímos o projeto
 
-- [Apresentação](https://docs.google.com/presentation/d/13jFMj7Hv5VTCvFjlD9UnCFsIb6afE7D8mTHsSFDWaSU/edit?usp=sharing)
+- [Apresentação](https://slides.com/nat-2/deck)
 ### Sobre nós
 
 - Natália Alves: [Linkedin](https://www.linkedin.com/in/nat%C3%A1lia-alves-5b00891b9/) / [GitHub](https://github.com/nat-alvec)
