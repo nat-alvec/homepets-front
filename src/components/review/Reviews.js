@@ -106,15 +106,15 @@ function Reviews() {
             </div>
             <div className='d-flex justify-content-start align-items-start ms-3'>
               <div className='w-100'>
-                <h4 className='pet-name mt-2 px-1' style={{ fontSize: '18px', width: "33vw" }}>
+                <h4 className='pet-name mt-2 px-1' style={{ fontSize: '18px', width: "33vw", maxWidth:"480px" }}>
                   {review.author.name}
                 </h4>
-                <p className='textsFonts ps-1' style={{ fontSize: '14px', width: "33vw"  }}>
+                <p className='textsFonts ps-1' style={{ fontSize: '14px', width: "33vw", maxWidth:"480px"  }}>
                   {review.text}
                 </p>
                 <p
                   className='textsFonts text-secondary mt-1 ps-1'
-                  style={{ fontSize: '12px', width: "33vw"  }}
+                  style={{ fontSize: '12px', width: "33vw", maxWidth:"480px"  }}
                 >
                   {convertDate(review.date)}
                 </p>
