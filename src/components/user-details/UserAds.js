@@ -6,7 +6,6 @@ import convertDate from '../../assets/functions/convertDate';
 import convertToAnimalIcons from '../../assets/functions/convertToAnimalIcons';
 
 function UserAds() {
-
   const [ads, setAds] = useState([]);
   const { id } = useParams();
 
@@ -24,7 +23,7 @@ function UserAds() {
     }
     fetchAds();
   }, [id]);
-  
+
   return (
     <div className='row d-flex justify-content-around'>
       {ads.map((elem, index) => {
@@ -52,6 +51,11 @@ function UserAds() {
                   {elem.title}
                 </h5>
                 <div className='d-flex'>
+                  {elem.reviews.length ? (
+                    <div className='me-3'>
+                      {elem.reviews.length} <i class="far fa-comment fa-lg"></i>
+                    </div>
+                  ) : null}
                   <div className='card-text me-3'>
                     <Link
                       to={`/adv/edit/${elem._id}`}

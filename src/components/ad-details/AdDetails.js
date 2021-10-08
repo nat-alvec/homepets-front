@@ -40,7 +40,7 @@ function AdDetails() {
   }
 
   if (!adDetails) {
-    return <h1>Carregando...</h1>;
+    return <h2 className='container'>Carregando...</h2>;
   }
 
   return (

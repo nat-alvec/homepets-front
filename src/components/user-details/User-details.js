@@ -52,7 +52,7 @@ function UserDetails() {
   }
 
   if (!userDetails) {
-    return <h1>Carregando...</h1>;
+    return <h2 className='container'>Carregando...</h2>;
   }
 
   return (
@@ -92,7 +92,10 @@ function UserDetails() {
                 {/* LINK PARA EDITAR USUÁRIO */}
                 <div className='container d-flex justify-content-end mt-0 mb-2'>
                   <Link to={`/edit-profile/${id}`}>
-                    <i className='fas fa-pen-square text-dark me-2' style={{fontSize:"30px"}}/>
+                    <i
+                      className='fas fa-pen-square text-dark me-2'
+                      style={{ fontSize: '30px' }}
+                    />
                   </Link>
                 </div>
               </div>
@@ -106,7 +109,7 @@ function UserDetails() {
                 Meus Anúncios
               </button>
               <button
-                className='btn btn-warning rounded-pill my-3' 
+                className='btn btn-warning rounded-pill my-3'
                 onClick={handleShowPets}
               >
                 Meus Pets
