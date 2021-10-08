@@ -89,9 +89,9 @@ function Reviews() {
         return (
           <div
             key={index}
-            className='container d-flex justify-content-start ms-2 mt-0'
+            className='d-flex justify-content-start align-items-center ms-3 mt-0'
           >
-            <div className='container w-25'>
+            <div className='ms-2'>
               <img
                 src={review.author.profilePicUrl}
                 alt='author'
@@ -104,17 +104,17 @@ function Reviews() {
                 }}
               />
             </div>
-            <div className='container d-flex justify-content-start align-items-start'>
-              <div className='w-50'>
-                <h4 className='pet-name mt-2' style={{ fontSize: '18px' }}>
+            <div className='d-flex justify-content-start align-items-start ms-3'>
+              <div className='w-100'>
+                <h4 className='pet-name mt-2 px-1' style={{ fontSize: '18px', width: "33vw" }}>
                   {review.author.name}
                 </h4>
-                <p className='textsFonts' style={{ fontSize: '14px' }}>
+                <p className='textsFonts ps-1' style={{ fontSize: '14px', width: "33vw"  }}>
                   {review.text}
                 </p>
                 <p
-                  className='textsFonts text-secondary mt-1'
-                  style={{ fontSize: '12px' }}
+                  className='textsFonts text-secondary mt-1 ps-1'
+                  style={{ fontSize: '12px', width: "33vw"  }}
                 >
                   {convertDate(review.date)}
                 </p>
