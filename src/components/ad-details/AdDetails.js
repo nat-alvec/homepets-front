@@ -52,20 +52,20 @@ function AdDetails() {
         {/* LINK PARA VOLTAR À PÁGINA ANTERIOR */}
         <div>
           <Link to='/'>
-            <button className='btn btn-danger rounded-pill my-0 mx-5'>
-              Home Pets
+            <button className='btn-sm btn-danger rounded-pill my-0 mx-3'>
+              Voltar
             </button>
           </Link>
         </div>
         {/* CARD DE DISPONIBILIDADE E INFORMAÇÕES DE CONTATO */}
         <div className='container mt-1 d-flex justify-content-center'>
           <div
-            className='card p-0 px-5 my-3 py-3 adv-first-card border-light bg-warning'
-            style={{ width: '98vw', maxWidth: '740px' }}
+            className='card p-0 px-0 my-3 py-2 adv-first-card border-light bg-warning'
+            style={{ width: '98vw', maxWidth: '840px' }}
           >
             <div className='first'></div>
-            <div className='second d-flex flex-row mt-0 p-2 align-items-center'>
-              <div className='image me-3 justify-content-center d-flex flex-column align-items-center'>
+            <div className='second d-flex mt-0 p-2 align-items-center justify-content-center'>
+              <div className='image ms-3 me-0 d-flex flex-column align-items-center justify-content-center'>
                 <img
                   src={adDetails.user.profilePicUrl}
                   alt='profile'
@@ -77,32 +77,36 @@ function AdDetails() {
                     objectFit: 'cover',
                   }}
                 />
+                <div className='d-flex flex-column align-items-center'>
+                  <p className='mb-2 ms-0 mt-2'>Entre em contato</p>
+                  {/* CONTATO */}
+
+                  <a href={`mailto:${adDetails.user.email}`}>
+                    <i
+                      className='fas fa-envelope icon-style text-dark fa-lg mt-0 ms-0'
+                      style={{ fontSize: '20px' }}
+                    ></i>
+                  </a>
+                </div>
               </div>
               {/* Primera parte do card 1 - Nome e foto do usuário / localização */}
-              <div className='ms-4 mb-2 me-4'>
-                <div className='d-flex flex-row mb-1 mt-2'>
-                  <span className='titleFont mx-3'>{adDetails.user.name}</span>
+              <div className='text-center'>
+                <div className=''>
+                  <div className='d-flex flex-row mb-1 mt-0'>
+                    <span className='titleFont mx-4'>
+                      {adDetails.user.name}
+                    </span>
+                  </div>
+                  <p className='localizationFont my-0 mx-4 fw-bolder'>
+                    Proprietário
+                  </p>
+                  <p className='localizationFont my-2 mx-4 text-dark'>
+                    {adDetails.user.personalDesc}
+                  </p>
+                  <p className='localizationFont my-0 mx-4 text-dark fst-italic'>
+                    {adDetails.location.country}, {adDetails.location.city}
+                  </p>
                 </div>
-                <p className='localizationFont my-0 mx-4 fw-bolder'>
-                  Proprietário
-                </p>
-                <p className='localizationFont my-2 mx-4 text-dark'>
-                  {adDetails.user.personalDesc}
-                </p>
-                <p className='localizationFont my-0 mx-4 text-dark fst-italic'>
-                  {adDetails.location.country}, {adDetails.location.city}
-                </p>
-              </div>
-              <div className='time d-flex flex-column align-items-center justify-content-center mt-0 ms-0 w-25'>
-                <p className='mb-2 ms-3'>Entre em contato</p>
-                {/* CONTATO */}
-
-                <a href={`mailto:${adDetails.user.email}`}>
-                  <i
-                    className='fas fa-envelope icon-style text-dark fa-lg mt-0 ms-4'
-                    style={{ fontSize: '20px' }}
-                  ></i>
-                </a>
               </div>
             </div>
           </div>

@@ -5,7 +5,7 @@ body{margin-top:0px;
 
     .titleFont{
         font-family: 'Poppins', sans-serif;
-        font-size: 28px;
+        font-size: 24px;
         color: black;
         font-weight: normal;
     }
@@ -84,6 +84,7 @@ body{margin-top:0px;
       width: 110px;
       height: 110px;
       /* background-color: white !important; */
+      
     }
     .media-left,
     .media-right,
