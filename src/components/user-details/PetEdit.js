@@ -6,19 +6,18 @@ import { AuthContext } from '../../contexts/authContext';
 
 import api from '../../apis/api';
 
-function PetEdit(){
-    
-    const [state, setState] = useState({
-        name: '',
-        breed: '',
-        age: '',
-        imageUrl: '',
-    })
-    
+function PetEdit() {
+  const [state, setState] = useState({
+    name: '',
+    breed: '',
+    age: '',
+    imageUrl: '',
+  });
+
   const { id } = useParams();
   const history = useHistory();
   const { loggedInUser } = useContext(AuthContext);
-    
+
   useEffect(() => {
     async function fetchPetDetails() {
       try {
@@ -32,7 +31,6 @@ function PetEdit(){
   }, [id]);
 
   function handleChange(event) {
-
     if (event.target.files) {
       return setState({ ...state, [event.target.name]: event.target.files[0] });
     }
@@ -54,23 +52,25 @@ function PetEdit(){
     event.preventDefault();
 
     try {
-
-      const imageUrl = await handleUpload(state.imageUrl);
-
-      const response = await api.patch(`/pet/${id}`, { ...state, imageUrl })
-
+      if (typeof state.imageUrl !== 'string') {
+        const imageUrl = await handleUpload(state.imageUrl);
+        const response = await api.patch(`/pet/${id}`, { ...state, imageUrl });
+        console.log(response.data);
+        history.push(`/detalhes-usuario/${loggedInUser.user._id}`);
+      }
+      const response = api.patch(`/pet/${id}`, {
+        ...state,
+      });
       console.log(response.data);
-
       history.push(`/detalhes-usuario/${loggedInUser.user._id}`);
     } catch (error) {
       console.error(error.response);
-      alert('Preencha corretamente')
+      alert('Preencha corretamente');
     }
   }
-    
-    
-    return(
-        <div className='container mt-4' style={{ maxWidth: '650px' }}>
+
+  return (
+    <div className='container mt-4' style={{ maxWidth: '650px' }}>
       <form onSubmit={handleSubmit} className='m-2'>
         <h1>Editar Informações de usuário</h1>
         <TextInput
@@ -111,7 +111,7 @@ function PetEdit(){
         </button>
       </form>
     </div>
-    )
+  );
 }
 
 export default PetEdit;
