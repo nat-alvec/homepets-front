@@ -59,13 +59,13 @@ function UserDetails() {
     <>
       <div className='container mt-2 mb-2 d-flex flex-column justify-content-center align-items-center'>
         <div
-          className='card border-light mt-2 mb-4'
+          className='card border-light mt-2 mb-4 bg-light'
           style={{ width: '98vw', maxWidth: '740px' }}
         >
           {/* CARD COM AS INFORMAÇÕES DO USUÁRIO */}
           <div className='page-heading'>
             <div className='media clearfix'>
-              <div className='media-left pr30'>
+              <div className='media-left pr30 bg-warning'>
                 <img
                   src={userDetails.profilePicUrl}
                   alt='User profile'
@@ -77,22 +77,22 @@ function UserDetails() {
                   }}
                 />
               </div>
-              <div className='media-body va-m w-100'>
+              <div className='media-body va-m w-100 bg-warning'>
                 <h2 className='titleFont mt-5'>{userDetails.name}</h2>
                 <p className='subtitleFont'>{userDetails.personalDesc}</p>
                 <div className='media-links'>
                   <ul className='list-inline list-unstyled'>
                     <li>
                       <a href={`mailto:${userDetails.email}`}>
-                        <i className='fas fa-envelope icon-style'></i>
+                        <i className='fas fa-envelope icon-style text-dark'></i>
                       </a>
                     </li>
                   </ul>
                 </div>
                 {/* LINK PARA EDITAR USUÁRIO */}
-                <div className='container d-flex justify-content-end mt-4'>
+                <div className='container d-flex justify-content-end mt-0 mb-2'>
                   <Link to={`/edit-profile/${id}`}>
-                    <i className='fas fa-pen-square pl-20 edit-user'></i>
+                    <i className='fas fa-pen-square text-dark me-2' style={{fontSize:"30px"}}/>
                   </Link>
                 </div>
               </div>
@@ -106,7 +106,7 @@ function UserDetails() {
                 Meus Anúncios
               </button>
               <button
-                className='btn btn-primary rounded-pill my-3'
+                className='btn btn-warning rounded-pill my-3' 
                 onClick={handleShowPets}
               >
                 Meus Pets

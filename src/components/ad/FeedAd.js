@@ -9,7 +9,7 @@ import Searchbar from '../search/SearchBar';
 function FeedAd(props) {
   const [ads, setAds] = useState([]);
   const [filteredAds, setFilteredAds] = useState([]);
-  
+
   useEffect(() => {
     async function fetchAds() {
       try {
@@ -28,7 +28,7 @@ function FeedAd(props) {
 
   function filterCards(searchTerm) {
     const normalizedSearchTerm = searchTerm.toLowerCase();
-    
+
     if (!searchTerm) {
       return setFilteredAds([...ads]);
     }
@@ -73,7 +73,17 @@ function FeedAd(props) {
             </Link>
             <div className='card-body'>
               <h5 className='card-text'>{elem.title}</h5>
-              <div className='card-text'>{convertToAnimalIcons(elem.pets)}</div>
+              <div className="d-flex justify-content-center">
+                <div className='card-text'>
+                  {convertToAnimalIcons(elem.pets)}
+                </div>
+                {elem.reviews.length ? (
+                  <div className="ms-5">
+                    {elem.reviews.length} <i className='fas fa-comments'></i>
+                  </div>
+                ) : null}
+              </div>
+
               <p className='m-0 mt-1 card-text'>
                 <span className='me-2'>
                   {convertDate(elem.availableDates.startDate.split('T')[0])}

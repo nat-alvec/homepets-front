@@ -46,6 +46,7 @@ function Login(props) {
     } catch (err) {
       console.error(err.response);
       setErrors({ ...err.response.data.errors });
+      alert('E-mail não cadastrado ou senha inválida')
     }
   }
 

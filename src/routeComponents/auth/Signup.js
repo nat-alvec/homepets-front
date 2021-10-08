@@ -17,7 +17,7 @@ function Signup(props) {
   useEffect(() => {
     // Caso o usuário já esteja logado, redirecione para página principal
     if (loggedInUser.token) {
-      history.push("/");
+      history.push('/');
     }
   }, [loggedInUser, history]);
 
@@ -41,6 +41,12 @@ function Signup(props) {
       setErrors({ ...err.response.data.errors });
       if (err.response.data.msg.includes('email')) {
         alert('Esse e-mail já está cadastrado');
+      } else if (err.response.data.msg.includes('Password')) {
+        alert(
+          'Senha muito fraca, escolha uma mais forte com no mínimo 8 caracteres. Inclua caracteres especiais, letras maiúsculas, minúsculas e números!'
+        );
+      } else {
+        alert('Preencha todos os campos');
       }
     }
   }

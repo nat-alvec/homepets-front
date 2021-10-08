@@ -1,6 +1,6 @@
 function ProfilePicForm(props){
     return(
-        <>
+        <div className="my-4">
         <input
         type='file'
         className='form-control'
@@ -10,7 +10,7 @@ function ProfilePicForm(props){
         onChange={props.onChange}
         placeholder={props.placeholder}
         />
-        </>
+        </div>
     )
 }
 

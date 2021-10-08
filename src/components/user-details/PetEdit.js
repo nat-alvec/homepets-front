@@ -64,6 +64,7 @@ function PetEdit(){
       history.push(`/detalhes-usuario/${loggedInUser.user._id}`);
     } catch (error) {
       console.error(error.response);
+      alert('Preencha corretamente')
     }
   }
     

@@ -13,12 +13,12 @@
 }
 
 .adv-first-card {
-  background-color: #72b9e7;
+  background-color: #0867a7;
 }
 
 .titleFont {
   font-family: 'Lora', serif;
-  font-size: 32px;
+  font-size: 30px;
 }
 
 .smallTitle {
@@ -34,7 +34,7 @@
 
 .localizationFont {
   font-family: 'Abel', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 0;
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logo from '../components/images/pet-house.png';
 import dogHomepage from '../components/images/homepage-dog.jpg';
 import brandName from '../components/images/homepets-brand.png';
@@ -22,8 +22,8 @@ function Home() {
         />
         <div className='card-img-overlay text-center d-flex justify-content-end align-items-center'>
           <div
-            className='bg-warning rounded ms-3 my-5 p-3 h-auto'
-            style={{ width: '42%' }}
+            className='rounded ms-3 my-5 p-3 h-auto'
+            style={{ width: '35vw', backgroundColor:"#FFB400" }}
           >
             <h3 className='card-title'>
               Cuide de um Pet em qualquer lugar do mundo
@@ -51,6 +51,12 @@ function Home() {
         </div>
         <FeedAd />
       </div>
+      <footer className="footer mt-auto py-3 bg-dark text-light text-end">
+      
+        <Link to="/info" className="text-decoration-none"> <p className="me-5 text-light ">Criado por Natália Alves e Sander Iwase</p></Link>
+        <p className="me-5">© 2021 homepets.com ™</p>
+        
+      </footer>
     </div>
   );
 }
