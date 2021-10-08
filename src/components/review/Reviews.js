@@ -64,24 +64,38 @@ function Reviews() {
   return (
     <div>
       <div>
-        {loggedInUser.user._id === adOwnerId ? (
-          <h5 className='mt-4 ms-4'>Responda um comentário</h5>
+        {loggedInUser.user._id ? (
+          <div>
+            {loggedInUser.user._id === adOwnerId ? (
+              <h5 className='mt-4 ms-4'>Responda um comentário</h5>
+            ) : (
+              <h5 className='mt-4 ms-4'>
+                Escreva um comentário para o proprietário
+              </h5>
+            )}
+            <form onSubmit={handleSubmit} className='mx-4'>
+              <TextAreaInput
+                placeholder='Escreva aqui'
+                id='reviewText'
+                name='text'
+                onChange={handleChange}
+                value={currentReview.text}
+              />
+              <button type='submit' className='btn-sm btn-primary my-4 d-block'>
+                {loggedInUser.user._id === adOwnerId
+                  ? 'Responda aqui'
+                  : 'Adicione seu comentário'}
+              </button>
+            </form>
+          </div>
         ) : (
-          <h5 className='mt-4'>Escreva um comentário para o proprietário</h5>
+          <div
+            className='bg-warning  mt-3 text-center d-flex justify-content-center align-items-center'
+            style={{ height: '100px' }}
+          >
+            <h5>Faça o login pra escrever um comentário</h5>
+          </div>
         )}
-
-        <form onSubmit={handleSubmit} className='mx-4'>
-          <TextAreaInput
-            placeholder='Escreva aqui'
-            id='reviewText'
-            name='text'
-            onChange={handleChange}
-            value={currentReview.text}
-          />
-          <button type='submit' className='btn-sm btn-primary my-4 d-block'>
-            {loggedInUser.user._id === adOwnerId ? "Responda aqui" : "Adicione seu comentário" }
-          </button>
-        </form>
       </div>
 
       {!reviews.length ? null : <h5 className='mt-4 mx-4'>Comentários</h5>}
@@ -106,15 +120,21 @@ function Reviews() {
             </div>
             <div className='d-flex justify-content-start align-items-start ms-3'>
               <div className='w-100'>
-                <h4 className='pet-name mt-2 px-1' style={{ fontSize: '18px', width: "33vw", maxWidth:"480px" }}>
+                <h4
+                  className='pet-name mt-2 px-1'
+                  style={{ fontSize: '18px', width: '33vw', maxWidth: '480px' }}
+                >
                   {review.author.name}
                 </h4>
-                <p className='textsFonts ps-1' style={{ fontSize: '14px', width: "33vw", maxWidth:"480px"  }}>
+                <p
+                  className='textsFonts ps-1'
+                  style={{ fontSize: '14px', width: '33vw', maxWidth: '480px' }}
+                >
                   {review.text}
                 </p>
                 <p
                   className='textsFonts text-secondary mt-1 ps-1'
-                  style={{ fontSize: '12px', width: "33vw", maxWidth:"480px"  }}
+                  style={{ fontSize: '12px', width: '33vw', maxWidth: '480px' }}
                 >
                   {convertDate(review.date)}
                 </p>
