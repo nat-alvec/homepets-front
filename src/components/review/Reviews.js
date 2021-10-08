@@ -79,7 +79,7 @@ function Reviews() {
             value={currentReview.text}
           />
           <button type='submit' className='btn-sm btn-primary my-4 d-block'>
-            Adicione seu comentário
+            {loggedInUser.user._id === adOwnerId ? "Responda aqui" : "Adicione seu comentário" }
           </button>
         </form>
       </div>
