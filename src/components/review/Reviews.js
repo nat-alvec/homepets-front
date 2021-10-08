@@ -51,6 +51,7 @@ function Reviews() {
         ...currentReview,
         to: { toAd: adId },
         author: loggedInUser.user._id,
+        stars: 5,
         date: new Date().toISOString().split('T')[0],
       });
 
@@ -58,73 +59,74 @@ function Reviews() {
       window.location.reload();
     } catch (err) {
       console.error(err.response);
-      //alert('Preencha todos os campos');
+      alert('Escreva seu comentário antes de enviá-lo');
     }
   }
   return (
     <div>
-      {loggedInUser.user._id === adOwnerId ? null : (
-        <div>
-          <h5 className='mt-4'>Escreva um review ou comentário</h5>
-          <form onSubmit={handleSubmit} className='m-2'>
-            <TextAreaInput
-              placeholder='Conte mais sobre você'
-              id='reviewText'
-              name='text'
-              onChange={handleChange}
-              value={currentReview.text}
-            />
-            <TextInput
-              type='number'
-              label='Avalie com uma nota de 1 a 5'
-              id='reviewScore'
-              name='stars'
-              onChange={handleChange}
-              value={currentReview.score}
-            />
-            <button type='submit' className='btn btn-primary my-3 d-block'>
-              Avalie
-            </button>
-          </form>
-        </div>
-      )}
+      <div>
+        {loggedInUser.user._id === adOwnerId ? (
+          <h5 className='mt-4 ms-4'>Responda um comentário</h5>
+        ) : (
+          <h5 className='mt-4'>Escreva um comentário para o proprietário</h5>
+        )}
 
-      {!reviews.length ? null : <h5 className='mt-4'>Reviews</h5>}
+        <form onSubmit={handleSubmit} className='mx-4'>
+          <TextAreaInput
+            placeholder='Escreva aqui'
+            id='reviewText'
+            name='text'
+            onChange={handleChange}
+            value={currentReview.text}
+          />
+          <button type='submit' className='btn-sm btn-primary my-4 d-block'>
+            Adicione seu comentário
+          </button>
+        </form>
+      </div>
+
+      {!reviews.length ? null : <h5 className='mt-4 mx-4'>Comentários</h5>}
       {reviews.map((review, index) => {
         return (
-          <div key={index} className='container d-flex justify-content-start'>
-            <div className='container'>
+          <div
+            key={index}
+            className='container d-flex justify-content-start ms-2 mt-0'
+          >
+            <div className='container w-25'>
               <img
                 src={review.author.profilePicUrl}
-                alt='Pet'
+                alt='author'
                 className='rounded-circle mx-1 p-3 pet-image'
-                width='150px'
+                width='100px'
                 style={{
-                  width: '100px',
-                  height: '100px',
+                  width: '120px',
+                  height: '120px',
                   objectFit: 'cover',
                 }}
               />
             </div>
-            <div className='container'>
-              <h3 className='pet-name mt-4'>{review.author.name}</h3>
-              <p className='textsFonts mb-0'>
-                Avaliação: {review.stars} estrelas
-              </p>
-              <p className='textsFonts' style={{ fontSize: '16px' }}>
-                {review.text}
-              </p>
-              <p
-                className='textsFonts text-secondary'
-                style={{ fontSize: '10px' }}
-              >
-                {convertDate(review.date)}
-              </p>
-            </div>
-            <div className='container d-flex flex-column'>
-              <Link to={`/review-delete/${review._id}`}>
-                <i className='fas fa-trash p-2 text-danger'></i>
-              </Link>
+            <div className='container d-flex justify-content-start align-items-start'>
+              <div className='w-50'>
+                <h4 className='pet-name mt-2' style={{ fontSize: '18px' }}>
+                  {review.author.name}
+                </h4>
+                <p className='textsFonts' style={{ fontSize: '14px' }}>
+                  {review.text}
+                </p>
+                <p
+                  className='textsFonts text-secondary mt-1'
+                  style={{ fontSize: '12px' }}
+                >
+                  {convertDate(review.date)}
+                </p>
+              </div>
+              {review.author._id === loggedInUser.user._id ? (
+                <div className='container d-flex flex-column'>
+                  <Link to={`/review-delete/${review._id}`}>
+                    <i className='fas fa-trash p-2 text-dark'></i>
+                  </Link>
+                </div>
+              ) : null}
             </div>
           </div>
         );

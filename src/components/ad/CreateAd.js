@@ -115,29 +115,54 @@ function CreateAd() {
     setPictureUrl({ ...pictureUrl, [event.target.name]: event.target.value });
   }
 
+  function handleCity(city) {
+    const citiesAndCountry = [
+      ['Buenos Aires', 'Argentina'],
+      ['Bariloche', 'Argentina'],
+      ['São Paulo', 'Brasil'],
+      ['Rio de Janeiro', 'Brasil'],
+      ['Santiago', 'Chile'],
+      ['Cancun', 'Mexico'],
+      ['Nova York', 'Estados Unidos'],
+      ['Miami', 'Estados Unidos'],
+      ['São Francisco', 'Estados Unidos'],
+      ['Toronto', 'Canadá'],
+      ['Vancouver', 'Canadá'],
+      ['Londres', 'Inglaterra'],
+      ['Madri', 'Espanha'],
+      ['Barcelona', 'Espanha'],
+      ['Bali', 'Indonesia'],
+      ['Tokyo', 'Japão'],
+    ];
+    return citiesAndCountry.find((elem) => elem.includes(city))[1];
+  }
+
   async function handleSubmit(event) {
     event.preventDefault();
 
     try {
-      const picturesArray = Object.values(pictureUrl).filter(
+      let picturesArray = Object.values(pictureUrl).filter(
         (elem) => elem !== ''
       );
+      if (!picturesArray.length) {
+        picturesArray = ["https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFuc2lvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"] 
+      }
 
       const response = await api.post('/adv', {
         ...state,
         pets: state.pets.map((elem) => elem._id),
         user: loggedInUser.user._id,
-        location: { ...location },
+        location: { ...location, country: handleCity(location.city) },
         amenities: [...amenities],
         availableDates: { ...availableDates },
         picturesUrl: [...picturesArray],
       });
-      
+
       console.log(response);
       history.push('/');
     } catch (err) {
       console.error(err.response);
-      alert("Preencha todos os campos")
+      alert('Preencha todos os campos');
     }
   }
   return (
@@ -219,7 +244,7 @@ function CreateAd() {
         />
         <div className='row'>
           <p>Qual a localização do seu imóvel?</p>
-          <div className='col-6'>
+          {/* <div className='col-6'>
             <DropdownMenu
               label='País'
               options={[
@@ -239,7 +264,7 @@ function CreateAd() {
               onChange={handleLocation}
               value={location.country}
             />
-          </div>
+          </div> */}
           <div className='col-6'>
             <DropdownMenu
               label='Cidade'

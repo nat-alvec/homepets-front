@@ -53,10 +53,18 @@ function EditProfile() {
     event.preventDefault();
 
     try {
-      const profilePicUrl = await handleUpload(state.profilePicUrl);
-
-      const response = api.patch(`/profile/${id}`, { ...state, profilePicUrl });
-
+      if (typeof state.profilePicUrl !== 'string') {
+        const profilePicUrl = await handleUpload(state.profilePicUrl);
+        const response = api.patch(`/profile/${id}`, {
+          ...state,
+          profilePicUrl,
+        });
+        console.log(response);
+        history.push(`/detalhes-usuario/${id}`);
+      }
+      const response = api.patch(`/profile/${id}`, {
+        ...state,
+      });
       console.log(response);
       history.push(`/detalhes-usuario/${id}`);
     } catch (error) {

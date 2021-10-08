@@ -52,7 +52,8 @@ function PetCreate() {
       console.log(response);
       history.push(`/detalhes-usuario/${loggedInUser.user._id}`);
     } catch (err) {
-      console.error(err.response);
+      console.error(err.response.data.err.message);
+      alert(err.response.data.err.message)
     }
   }
 
