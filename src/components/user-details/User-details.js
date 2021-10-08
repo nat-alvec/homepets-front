@@ -64,40 +64,32 @@ function UserDetails() {
         >
           {/* CARD COM AS INFORMAÇÕES DO USUÁRIO */}
           <div className='page-heading'>
-            <div className='media clearfix'>
-              <div className='media-left pr30 bg-warning'>
-                <img
-                  src={userDetails.profilePicUrl}
-                  alt='User profile'
-                  className='rounded-circle mx-1 p-3 picUserPof'
-                  style={{
-                    height: '250px',
-                    width: '250px',
-                    objectFit: 'cover',
-                  }}
-                />
-              </div>
-              <div className='media-body va-m w-100 bg-warning'>
-                <h2 className='titleFont mt-5'>{userDetails.name}</h2>
-                <p className='subtitleFont'>{userDetails.personalDesc}</p>
-                <div className='media-links'>
-                  <ul className='list-inline list-unstyled'>
-                    <li>
-                      <a href={`mailto:${userDetails.email}`}>
-                        <i className='fas fa-envelope icon-style text-dark'></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                {/* LINK PARA EDITAR USUÁRIO */}
-                <div className='container d-flex justify-content-end mt-0 mb-2'>
+            <div className='d-flex justify-content-around align-items-center bg-warning'>
+              <img
+                src={userDetails.profilePicUrl}
+                alt='User profile'
+                className='rounded-circle mx-1 p-3 picUserPof'
+                style={{
+                  height: '190px',
+                  width: '190px',
+                  objectFit: 'cover',
+                }}
+              />
+              {/* LINK PARA EDITAR USUÁRIO */}
+              <div className=''>
+                <h2 className='titleFont mt-4'>{userDetails.name}</h2>
+                <p className='subtitleFont ms-2 mt-3'>{userDetails.email}</p>
+                <div className='d-flex text-center justify-content-center mt-2 mb-0'>
                   <Link to={`/edit-profile/${id}`}>
                     <i
-                      className='fas fa-pen-square text-dark me-2'
-                      style={{ fontSize: '30px' }}
+                      className='fas fa-pen-square text-dark me-0 mt-2'
+                      style={{ fontSize: '25px' }}
                     />
                   </Link>
                 </div>
+                <p className='subtitleFont text-center fst-italic'>
+                  {userDetails.personalDesc}
+                </p>
               </div>
             </div>
             {/* CARD COM ANÚNCIOS E PETS DO USUÁRIO */}

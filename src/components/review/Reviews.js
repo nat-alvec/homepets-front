@@ -2,7 +2,6 @@ import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import api from '../../apis/api';
 import TextAreaInput from '../form/TextArea';
-import TextInput from '../form/TextInput';
 import { AuthContext } from '../../contexts/authContext';
 import convertDate from '../../assets/functions/convertDate';
 
